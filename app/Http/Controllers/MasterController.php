@@ -23,9 +23,9 @@ class MasterController extends Controller
         $capacidade = request('capacidade');
         $bloqueio = request('bloqueio');
 
-        $verificar = \DB::connection('mysql')->table('enderecos')->where('endereco', $endereco)->get();
+        $verificar = \DB::connection('mysql')->table('enderecos_masters')->where('endereco', $endereco)->first();
 
-        if($verificar && count($verificar) > 0){
+        if($verificar){
 
             return redirect('/estoque/novo')->with('msg2', 'Esse endereço já existe, tente novamente com um novo endereço.');
         }else{
