@@ -41,15 +41,15 @@
     <div class="card card-widget card-body">
         <div class="row">
             <form action="/estoque/enderecos">
-                <div class="col-md-10">
+                <div class="">
                     <input type="text" name="search" autofocus="autofocus" class="form-control">
                 </div>
 
-                <div class="col-md-2">
+                <div class="">
                     <button class="btn btn-default btn-flat"><i class="fas fa-search"></i> Pesquisar</button>
                 </div>
             </form>
-            <div class="col-md-2 pull-right" style="float: right;">
+            <div class="pull-right" style="float: right;">
                 <a href="/estoque/novo" class="btn btn-default btn-flat pull-right"><i class="fas fa-plus"></i> Novo</a>
             </div>
         </div>    
