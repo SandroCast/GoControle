@@ -12,12 +12,6 @@ class MasterController extends Controller
 {
     
 
-    public function index()
-    {
-        
-        return view('master.index');
-    }
-
     public function endereco_novo()
     {
         return view('master.novo');
