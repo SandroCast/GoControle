@@ -14,15 +14,8 @@ class MasterController extends Controller
 
     public function index()
     {
-
-        $master = Master::all();
-
-        echo $master;
-        exit;
-        $endereco = EnderecoMaster::all();
-
-        return view('estoque.master.index', compact('master', 'endereco'));
-
+        
+        return view('master.index');
     }
 
     public function endereco_novo()

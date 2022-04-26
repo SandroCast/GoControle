@@ -23,8 +23,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home2');
 
-
-
+Route::get('/estoque/novo', [MasterController::class, 'endereco_novo'])->name('endereco_novo')->middleware('auth');
+Route::post('/estoque/novo/criar', [MasterController::class, 'endereco_criar'])->name('endereco_criar')->middleware('auth');
 
 
 
@@ -43,7 +43,7 @@ Route::get('/estoque/armazenamento/enderecos', [EstoqueController::class, 'ender
 Route::get('/estoque/armazenamento/enderecos/editar/{id}', [EstoqueController::class, 'editar'])->name('estoque_enderecos_editar')->middleware('auth');
 Route::get('/estoque/armazenamento/enderecos/editar/excluir/{id}', [EstoqueController::class, 'excluir'])->name('estoque_enderecos_editar_excluir')->middleware('auth');
 Route::post('/estoque/armazenamento/enderecos/editar/{id}', [EstoqueController::class, 'editar_store'])->name('estoque_enderecos_editar_store')->middleware('auth');
-Route::get('/estoque/armazenamento/enderecos/novo', [EstoqueController::class, 'novo'])->name('estoque_enderecos_novo')->middleware('auth');
+
 Route::post('/estoque/armazenamento/enderecos/novo/criar', [EstoqueController::class, 'criar'])->name('estoque_enderecos_novo_criar')->middleware('auth');
 Route::get('/estoque/armazenamento/buscar', [EstoqueController::class, 'buscar'])->name('estoque_buscar')->middleware('auth');
 Route::get('/estoque/armazenamento/retirar/{id}', [EstoqueController::class, 'retirar'])->name('estoque_retirar')->middleware('auth');

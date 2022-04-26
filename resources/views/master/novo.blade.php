@@ -41,7 +41,7 @@
 
     <div class="card card-primary" style="max-width:50%;">
         <div class="card-body">
-            <form action="/estoque/master/novo/criar" method="POST">
+            <form action="/estoque/novo/criar" method="POST">
                 @method('POST')
                 @csrf
 
