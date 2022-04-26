@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Master;
-use App\EnderecoMaster;
-use App\KardexMaster;
-
+use App\Models\EnderecoMaster;
 
 class MasterController extends Controller
 {
@@ -26,11 +23,11 @@ class MasterController extends Controller
         $capacidade = request('capacidade');
         $bloqueio = request('bloqueio');
 
-        $verificar = EnderecoMaster::where('endereco', $endereco)->get();
+        $verificar = \DB::connection('mysql')->table('enderecos')->where('endereco', $endereco)->first();
 
-        if($verificar && count($verificar) > 0){
+        if($verificar){
 
-            return redirect('/estoque/master/novo')->with('msg2', 'Esse endereço já existe, tente novamente com um novo endereço.');
+            return redirect('/estoque/novo')->with('msg2', 'Esse endereço já existe, tente novamente com um novo endereço.');
         }else{
 
             $novo = new EnderecoMaster;
@@ -42,7 +39,7 @@ class MasterController extends Controller
     
             $novo->save();
     
-            return redirect('/estoque/master/novo')->with('msg', 'Endereço criado com sucesso.');
+            return redirect('/estoque/novo')->with('msg', 'Endereço criado com sucesso.');
 
 
         }
@@ -50,6 +47,25 @@ class MasterController extends Controller
         
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     public function enderecos_lista(Request $request)
     {
 
