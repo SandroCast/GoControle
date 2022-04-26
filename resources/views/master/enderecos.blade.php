@@ -39,7 +39,7 @@
 
 
     <div class="card card-widget card-body">
-        <div class="row">
+        <div class="row col-md-12">
             <form action="/estoque/enderecos">
                 <div class="col-md-6">
                     <input type="text" name="search" autofocus="autofocus" class="form-control">
