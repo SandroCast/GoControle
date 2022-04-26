@@ -41,13 +41,8 @@
     <div class="card card-widget card-body">
         <div class="">
             <form action="/estoque/enderecos">
-                <div style="width: 50%; display: inline;">
-                    <input type="text" name="search" autofocus="autofocus" class="form-control">
-                </div>
-
-                <div style="display: inline;">
-                    <button class="btn btn-default btn-flat"><i class="fas fa-search"></i> Pesquisar</button>
-                </div>
+                <input style="width: 50%; margin: 10px; display: inline;" type="text" name="search" autofocus="autofocus" class="form-control">
+                <button style="display: inline;" class="btn btn-default btn-flat"><i class="fas fa-search"></i> Pesquisar</button>
             </form>
             <div class="pull-right" style="float: right;">
                 <a href="/estoque/novo" class="btn btn-default btn-flat pull-right"><i class="fas fa-plus"></i> Novo</a>
