@@ -67,8 +67,10 @@
 
     </div>
 
+@stop
 
-    @section('footer')      
+
+@section('footer')      
     <strong>Copyright © 2014-2022 <a href="https://goeyewear.com.br/">GO Eyewear</a>.</strong>
     Todos direitos reservados.
     <div class="float-right d-none d-sm-inline-block">
