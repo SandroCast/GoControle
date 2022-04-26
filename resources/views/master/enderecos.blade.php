@@ -1,10 +1,12 @@
-@extends('layouts.principal')
+@extends('adminlte::page')
 
-@section('title')
-<i class="fa fa-map-marker"></i> Endereços
-@append 
+@section('title', 'GoControle')
 
-@section('conteudo')
+@section('content_header')
+<i class="fas fa-map-marker"></i> Endereços
+@stop
+
+@section('content')
 
     <style>
         .msg {
@@ -36,9 +38,9 @@
 
 
 
-    <div class="box box-widget box-body">
+    <div class="card card-widget card-body">
         <div class="row">
-            <form action="/estoque/master/enderecos">
+            <form action="/estoque/enderecos">
                 <div class="col-md-6">
                     <input type="text" name="search" autofocus="autofocus" class="form-control">
                 </div>
@@ -48,7 +50,7 @@
                 </div>
             </form>
             <div class="col-md-2 pull-right">
-                <a href="/estoque/master/novo" class="btn btn-default btn-flat pull-right"><i class="fa fa-plus"></i> Novo</a>
+                <a href="/estoque/novo" class="btn btn-default btn-flat pull-right"><i class="fas fa-plus"></i> Novo</a>
             </div>
         </div>    
 
@@ -79,7 +81,7 @@
                                         <td>{{$endereco->descricao}}</td>
                                         <td>{{$endereco->capacidade}}</td>
                                         <td>
-                                            <a href="/estoque/master/endereco/editar/{{ $endereco->id }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                                            <a href="/estoque/endereco/editar/{{ $endereco->id }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                         </td>
     
                                     </tr>
@@ -98,4 +100,20 @@
 
 
 
+@stop
+
+@section('footer')      
+    <strong>Copyright © 2014-2022 <a href="https://goeyewear.com.br/">GO Eyewear</a>.</strong>
+    Todos direitos reservados.
+    <div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 1.0.0
+    </div>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
 @stop

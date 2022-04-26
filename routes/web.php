@@ -26,6 +26,9 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::get('/estoque/novo', [MasterController::class, 'endereco_novo'])->name('endereco_novo')->middleware('auth');
 Route::post('/estoque/novo/criar', [MasterController::class, 'endereco_criar'])->name('endereco_criar')->middleware('auth');
+Route::get('/estoque/enderecos', [EstoqueController::class, 'enderecos_lista'])->name('enderecos_lista')->middleware('auth');
+
+
 
 
 

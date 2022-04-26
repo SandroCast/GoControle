@@ -48,24 +48,6 @@ class MasterController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     public function enderecos_lista(Request $request)
     {
 
@@ -81,14 +63,34 @@ class MasterController extends Controller
                 
             ])->orderBy('id', 'DESC')->get();
 
-            return view('estoque.master.enderecos', compact('enderecos'));
+            return view('master.enderecos', compact('enderecos'));
         }else{
 
             $enderecos = EnderecoMaster::where('id', '>', 0)->orderBy('id', 'DESC')->get();
-            return view('estoque.master.enderecos', compact('enderecos'));
+            return view('master.enderecos', compact('enderecos'));
         }
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function endereco_editar($id, Request $request)
