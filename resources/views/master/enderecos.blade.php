@@ -41,11 +41,11 @@
     <div class="card card-widget card-body">
         <div class="row">
             <form action="/estoque/enderecos">
-                <div class="">
+                <div class="d-inline">
                     <input type="text" name="search" autofocus="autofocus" class="form-control">
                 </div>
 
-                <div class="">
+                <div class="d-inline">
                     <button class="btn btn-default btn-flat"><i class="fas fa-search"></i> Pesquisar</button>
                 </div>
             </form>
