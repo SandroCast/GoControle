@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Master extends Model
 {
     use HasFactory;
+
+
+    public function endereco() {
+
+        return $this->belongsTo('App\EnderecoMaster', 'endereco_id', 'id');
+
+    }
+
+
 }

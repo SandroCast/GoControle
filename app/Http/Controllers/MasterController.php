@@ -122,25 +122,7 @@ class MasterController extends Controller
     
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function buscar()
+    public function buscar($id, Request $request)
     {
 
         $itens = request('item');
@@ -159,11 +141,11 @@ class MasterController extends Controller
 
         $saldo = Master::all();
 
-
-        return view('estoque.master.buscar', compact('url','itens','saldo'));
+        return view('master.buscar', compact('url','itens','saldo'));
     }
 
-    public function retirar($id, $url, Request $request)
+
+    public function retirar($url, $id,  Request $request)
     {
 
         $qtd = request('quantidade');
@@ -171,13 +153,13 @@ class MasterController extends Controller
         $item = Master::findOrFail($id);
 
         if($item->endereco->bloqueio == 1){
-            return redirect('/estoque/master/buscar?item='.$url)->with('msg2', 'Este endereço está BLOQUEADO, desbloqueie e tente novamente.'); 
+            return redirect('/estoque/buscar?item='.$url)->with('msg2', 'Este endereço está BLOQUEADO, desbloqueie e tente novamente.'); 
         }
         
         if($qtd > $item->quantidade){
 
 
-            return redirect('/estoque/master/buscar?item='.$url)->with('msg2', 'Quantidade de retirada maior que a alocada.'); 
+            return redirect('/estoque/buscar?item='.$url)->with('msg2', 'Quantidade de retirada maior que a alocada.'); 
         }else{
 
             if($qtd == $item->quantidade){
@@ -185,7 +167,7 @@ class MasterController extends Controller
 
                 $item->delete();
 
-                return redirect('/estoque/master/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
+                return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
             }else{
 
 
@@ -195,7 +177,7 @@ class MasterController extends Controller
                 $item->save();
 
 
-                return redirect('/estoque/master/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
+                return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
 
             }
         }

@@ -30,6 +30,8 @@ Route::get('/estoque/enderecos', [MasterController::class, 'enderecos_lista'])->
 Route::get('/estoque/endereco/editar/{id}', [MasterController::class, 'endereco_editar'])->name('endereco_editar')->middleware('auth');
 Route::post('/estoque/endereco/update/{id}', [MasterController::class, 'endereco_update'])->name('endereco_update')->middleware('auth');
 Route::post('/estoque/endereco/delete/{id}', [MasterController::class, 'endereco_delete'])->name('endereco_delete')->middleware('auth');
+Route::get('/estoque/buscar', [MasterController::class, 'buscar'])->name('buscar')->middleware('auth');
+Route::post('/estoque/retirar/{url}/{id}', [MasterController::class, 'retirar'])->name('retirar')->middleware('auth');
 
 
 

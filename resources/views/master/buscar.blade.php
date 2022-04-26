@@ -1,10 +1,12 @@
-@extends('layouts.principal')
+@extends('adminlte::page')
 
-@section('title')
-<i class="fa fa-search"></i> Buscar Itens no Estoque
-@append 
+@section('title', 'GoControle')
 
-@section('conteudo')
+@section('content_header')
+    <h1><i class="fa fa-search"></i> Buscar Itens no Estoque</h1>
+@stop
+
+@section('content')
 
     <style>
         .msg {
@@ -38,7 +40,7 @@
 
 
 
-    <div class="box box-widget box-body">
+    <div class="card card-widget card-body">
         <div class="row">
             <form action="" method="GET">
                 <div class="col-md-6">
@@ -56,12 +58,12 @@
 
 
     @if($itens)
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">{{ count($itens) }} resultado(s)</h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ count($itens) }} resultado(s)</h3>
             </div>
 
-            <div class="box-body p-0">
+            <div class="card-body p-0">
                 <table class="table table-sm">
                     <thead>
                         <tr>
@@ -69,8 +71,6 @@
                             <th>Saldo Master</th>
                             <th>Endereço</th>
                             <th>Alocada</th>
-                            <th>Local Varejo</th>
-                            <th>Saldo Existente</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -84,10 +84,10 @@
                                 <td>{{ $saldo->where('secundario', $item->secundario)->sum('quantidade') }}</td>
                                 <td>{{ $item->endereco->endereco }}</td>
                                 <td>{{ $item->quantidade }}</td>
-                                <td>{{$item->local->local_prateleira}}</td>
-                                <td>{{$item->saldo->existente + $item->saldo->saldo_trocas}}</td>
                                 <td>
-                                    <form action="/estoque/master/item/retirar/{{$url}}/{{$item->id}}">
+                                    <form action="/estoque/retirar/{{$url}}/{{$item->id}}"  method="POST">
+                                        @method('POST')
+                                        @csrf
                                         <input type="text" name="quantidade" required>
                                         <input style="margin-left:15px;" class="btn btn-danger btn-sm" type="submit" value="Retirar">
                                     </form>
@@ -109,3 +109,19 @@
 
 @stop
 
+
+@section('footer')      
+    <strong>Copyright © 2014-2022 <a href="https://goeyewear.com.br/">GO Eyewear</a>.</strong>
+    Todos direitos reservados.
+    <div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 1.0.0
+    </div>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
