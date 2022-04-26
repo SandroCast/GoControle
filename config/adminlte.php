@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'GoControle',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>Go</b>Controle',
+    'logo_img' => '/img/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
+    'usermenu_header' => true,
     'usermenu_header_class' => 'bg-primary',
     'usermenu_image' => false,
     'usermenu_desc' => false,
@@ -85,8 +85,8 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    'layout_fixed_sidebar' => true,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -246,6 +246,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        /*
         [
             'text'        => 'pages',
             'url'         => 'admin/pages',
@@ -253,55 +254,93 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        */
+        ['header' => ''],
+        ['header' => 'Menu'],
+        /*
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
+        
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        */
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Conferência',
+            'icon'    => 'far fa-clipboard',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Solicitar Item',
+                    'icon_color'    => 'cyan',
+                    'url'  => '/conferencia',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
+                    'text' => 'Minhas Solicitações',
+                    'icon_color'    => 'cyan',
+                    'url'  => '/conferencia/minhas/solicitacoes',
+                ],
+
+
+            ],
+
+            
+            
+        ],
+
+        [
+            'text'    => 'Estoque',
+            'icon'    => 'fas fa-cubes',
+            'submenu' => [
+                [
+                    'text' => 'Armazenamento',
+                    'icon_color'    => 'cyan',
+
                     'submenu' => [
                         [
-                            'text' => 'level_two',
-                            'url'  => '#',
+                            'text' => 'Mapa',
+                            'icon_color'    => 'yellow',
+                            'url'  => '/estoque',
                         ],
                         [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
+                            'text' => 'Alocar',
+                            'icon_color'    => 'yellow',
+                            'url'  => '/estoque/armazenamento/alocar',
                         ],
+                        [
+                            'text' => 'Buscar',
+                            'icon_color'    => 'yellow',
+                            'url'  => '/estoque/armazenamento/buscar',
+                        ],
+                        [
+                            'text' => 'Endereços',
+                            'icon_color'    => 'yellow',
+                            'url'  => '/estoque/armazenamento/enderecos',
+                        ],
+
+
                     ],
+
+
                 ],
+
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Solicitações Conferência',
+                    'icon_color'    => 'cyan',
+                    'url'  => '/estoque/conferencia/dashboard',
                 ],
+
+
             ],
+
+            
         ],
+
+        /*
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -318,6 +357,8 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
+
+        */
     ],
 
     /*
