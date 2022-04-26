@@ -271,73 +271,28 @@ return [
         ],
         */
         [
-            'text'    => 'Conferência',
-            'icon'    => 'far fa-clipboard',
-            'submenu' => [
-                [
-                    'text' => 'Solicitar Item',
-                    'icon_color'    => 'cyan',
-                    'url'  => '/conferencia',
-                ],
-                [
-                    'text' => 'Minhas Solicitações',
-                    'icon_color'    => 'cyan',
-                    'url'  => '/conferencia/minhas/solicitacoes',
-                ],
-
-
-            ],
-
-            
-            
-        ],
-
-        [
             'text'    => 'Estoque',
             'icon'    => 'fas fa-cubes',
             'submenu' => [
-                [
-                    'text' => 'Armazenamento',
-                    'icon_color'    => 'cyan',
-
-                    'submenu' => [
-                        [
-                            'text' => 'Mapa',
-                            'icon_color'    => 'yellow',
-                            'url'  => '/estoque',
-                        ],
-                        [
-                            'text' => 'Alocar',
-                            'icon_color'    => 'yellow',
-                            'url'  => '/estoque/armazenamento/alocar',
-                        ],
-                        [
-                            'text' => 'Buscar',
-                            'icon_color'    => 'yellow',
-                            'url'  => '/estoque/armazenamento/buscar',
-                        ],
-                        [
-                            'text' => 'Endereços',
-                            'icon_color'    => 'yellow',
-                            'url'  => '/estoque/armazenamento/enderecos',
-                        ],
-
-
-                    ],
-
-
-                ],
 
                 [
-                    'text' => 'Solicitações Conferência',
+                    'text' => 'Alocar',
                     'icon_color'    => 'cyan',
-                    'url'  => '/estoque/conferencia/dashboard',
+                    'url'  => '/estoque/alocar',
                 ],
-
+                [
+                    'text' => 'Buscar',
+                    'icon_color'    => 'cyan',
+                    'url'  => '/estoque/buscar',
+                ],
+                [
+                    'text' => 'Endereços',
+                    'icon_color'    => 'cyan',
+                    'url'  => '/estoque/enderecos',
+                ],
 
             ],
 
-            
         ],
 
         /*
