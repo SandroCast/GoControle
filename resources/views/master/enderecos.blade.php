@@ -39,9 +39,9 @@
 
 
     <div class="card card-widget card-body">
-        <div class="row col-md-12">
+        <div class="row">
             <form action="/estoque/enderecos">
-                <div class="col-md-6">
+                <div class="col-md-10">
                     <input type="text" name="search" autofocus="autofocus" class="form-control">
                 </div>
 
