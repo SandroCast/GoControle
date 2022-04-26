@@ -49,7 +49,7 @@
                     <button class="btn btn-default btn-flat"><i class="fas fa-search"></i> Pesquisar</button>
                 </div>
             </form>
-            <div class="col-md-2 pull-right">
+            <div class="col-md-2 pull-right" style="float: right;">
                 <a href="/estoque/novo" class="btn btn-default btn-flat pull-right"><i class="fas fa-plus"></i> Novo</a>
             </div>
         </div>    
