@@ -11,5 +11,5 @@ class EnderecoMaster extends Model
 
 
     protected $connection = 'mysql';
-    protected $table = 'enderecos';
+    protected $table = 'enderecos_masters';
 }
