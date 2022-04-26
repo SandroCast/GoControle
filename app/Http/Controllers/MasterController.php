@@ -72,33 +72,12 @@ class MasterController extends Controller
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function endereco_editar($id, Request $request)
     {
 
         $endereco = EnderecoMaster::findOrFail($id);
 
-        return view('estoque.master.editar', compact('endereco'));
+        return view('master.editar', compact('endereco'));
         
     }
 
@@ -117,7 +96,7 @@ class MasterController extends Controller
         $store->bloqueio = $bloqueio;
         $store->save();
         
-        return redirect('/estoque/master/enderecos')->with('msg', 'Endereço '.$endereco.' editado com sucesso.');
+        return redirect('/estoque/enderecos')->with('msg', 'Endereço '.$endereco.' editado com sucesso.');
         
     }
 
@@ -125,21 +104,41 @@ class MasterController extends Controller
     {
         $endereco = EnderecoMaster::findOrFail($id);
 
+
+
         $item = Master::where('endereco_id', $id)->get();
 
         if(count($item) > 0) {
 
-            return redirect('/estoque/master/enderecos')->with('msg2', 'Endereço com itens não pode ser excluido.');
+            return redirect('/estoque/enderecos')->with('msg2', 'Endereço com itens não pode ser excluido.');
         
         }else{
 
             $endereco->delete();
 
-            return redirect('/estoque/master/enderecos')->with('msg', 'Endereço excluido com sucesso.');
+            return redirect('/estoque/enderecos')->with('msg', 'Endereço excluido com sucesso.');
     
         }
     
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function buscar()
     {

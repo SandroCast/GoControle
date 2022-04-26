@@ -54,7 +54,7 @@
             <div class="table-responsive">
                 <div class="col-md-12">
 
-                    <table class="table table-bordered table-striped tabela3 dataTable no-footer table-hover" id="myTable" role="grid" aria-describedby="myTable_info">
+                    <table class="table table-bordered table-striped tabela3 dataTable no-footer table-hover">
                         <thead>
                             <tr>
                                 <th>ID</th>

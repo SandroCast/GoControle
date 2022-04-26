@@ -1,10 +1,12 @@
-@extends('layouts.principal')
+@extends('adminlte::page')
 
-@section('title')
-<i class="fa fa-edit"></i> Editando endereço {{ $endereco->endereco }}
-@append 
+@section('title', 'GoControle')
 
-@section('conteudo')
+@section('content_header')
+    <h1><i class="fas fa-edit"></i> Editando endereço {{ $endereco->endereco }}</h1>
+@stop
+
+@section('content')
 
     <style>
         .msg {
@@ -36,9 +38,9 @@
 <p class="msg" id="msg2">{{ session('msg2') }}</p>
 @endif
 
-<div class="box box-primary" style="max-width:50%;">
-    <div class="box-body">
-        <form style="display:inline;" action="/estoque/master/endereco/update/{{ $endereco->id }}" method="POST">
+<div class="card card-primary" style="max-width:50%;">
+    <div class="card-body">
+        <form style="display:inline;" action="/estoque/endereco/update/{{ $endereco->id }}" method="POST">
             @method('POST')
             @csrf
 
@@ -60,7 +62,7 @@
             <br>
             <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
-        <form style="display:inline;" action="/estoque/master/endereco/delete/{{$endereco->id}}" method="POST">
+        <form style="display:inline;" action="/estoque/endereco/delete/{{$endereco->id}}" method="POST">
             @method('POST')
             @csrf
             <button type="submit" class="btn btn-danger" style="float:right;">Deletar Endereço Permanentemente</button>
@@ -69,4 +71,20 @@
 
 </div>
 
+@stop
+
+@section('footer')      
+    <strong>Copyright © 2014-2022 <a href="https://goeyewear.com.br/">GO Eyewear</a>.</strong>
+    Todos direitos reservados.
+    <div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 1.0.0
+    </div>
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
 @stop
