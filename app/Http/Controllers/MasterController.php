@@ -27,7 +27,7 @@ class MasterController extends Controller
 
     public function endereco_novo()
     {
-        return view('estoque.master.novo');
+        return view('master.novo');
     
     }
 
