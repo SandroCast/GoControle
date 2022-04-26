@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EnderecoMaster;
+use App\Models\Master;
 
 class MasterController extends Controller
 {
@@ -103,7 +104,6 @@ class MasterController extends Controller
     public function endereco_delete($id, Request $request)
     {
         $endereco = EnderecoMaster::findOrFail($id);
-
 
 
         $item = Master::where('endereco_id', $id)->get();
