@@ -25,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/teste', [MasterController::class, 'index'])->name('index');
+Route::get('/novo', [MasterController::class, 'endereco_novo'])->name('endereco_novo');
