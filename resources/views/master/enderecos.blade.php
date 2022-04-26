@@ -3,7 +3,7 @@
 @section('title', 'GoControle')
 
 @section('content_header')
-<i class="fas fa-map-marker"></i> Endereços
+    <h1><i class="fas fa-map-marker"></i> Endereços</h1>
 @stop
 
 @section('content')
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="col-md-2">
-                    <button class="btn btn-default btn-flat"><i class="fa fa-search"></i> Pesquisar</button>
+                    <button class="btn btn-default btn-flat"><i class="fas fa-search"></i> Pesquisar</button>
                 </div>
             </form>
             <div class="col-md-2 pull-right">
