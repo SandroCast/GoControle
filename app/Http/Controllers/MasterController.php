@@ -219,12 +219,13 @@ class MasterController extends Controller
                 return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Quantidade ultrapassa o limite suportado.');
             }
 
+            echo $endereco;
+            exit;
+
         }
 
 
-        echo $endereco;
-        exit;
-    
+
 
         if($item){
 
