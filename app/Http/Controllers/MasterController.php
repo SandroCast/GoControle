@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\EnderecoMaster;
 use App\Models\Master;
 use App\Models\Iten;
+use App\Models\Kardex;
 
 class MasterController extends Controller
 {
@@ -144,6 +145,7 @@ class MasterController extends Controller
 
     public function retirar($url, $id,  Request $request)
     {
+        $user = auth()->user();
 
         $qtd = request('quantidade');
         
@@ -161,17 +163,29 @@ class MasterController extends Controller
 
             if($qtd == $item->quantidade){
 
+                $kardex = new Kardex;
+                $kardex->item = $item->secundario;
+                $kardex->usuario = $user->name;
+                $kardex->movimentacao = 'S';
+                $kardex->local = $item->endereco_nome;
+                $kardex->qtde = "-".$qtd;
+                $kardex->save();
 
                 $item->delete();
 
                 return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
             }else{
 
+                $kardex = new Kardex;
+                $kardex->item = $item->secundario;
+                $kardex->usuario = $user->name;
+                $kardex->movimentacao = 'S';
+                $kardex->local = $item->endereco_nome;
+                $kardex->qtde = "-".$qtd;
+                $kardex->save();
 
                 $item->quantidade = $item->quantidade - $qtd;
-
                 $item->save();
-
 
                 return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
 
@@ -288,9 +302,7 @@ class MasterController extends Controller
             ->orWhere('local', $itens)
             ->orderBy('created_at', 'ASC')
             ->get();
-            
         }
-
 
         return view('master.movimentacoes', compact('itens'));  
     }
