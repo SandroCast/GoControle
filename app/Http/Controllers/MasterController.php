@@ -122,7 +122,7 @@ class MasterController extends Controller
     
     }
 
-    public function buscar($id, Request $request)
+    public function buscar(Request $request)
     {
 
         $itens = request('item');
