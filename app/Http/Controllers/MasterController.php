@@ -277,20 +277,17 @@ class MasterController extends Controller
     public function movimentacoes(Request $request)
     {
 
-        $busca = request('busca');
+        $itens = request('busca');
 
-        if($busca) {
+        if($itens) {
 
-            $itens = \DB::connection('mysql')->table('kardex_masters')->where([
-                ['item','like', $busca]
-            ])->orWhere([
-                ['usuario','like', $busca]
-            ])->orWhere([
-                ['movimentacao','like', $busca]
-            ])->orWhere([
-                ['local','like', $busca]
-            ])->orderBy('created_at', 'ASC')->get();
-
+            $itens = \DB::connection('mysql')->table('kardex_masters')
+            ->where('item', $itens)
+            ->orWhere('usuario', $itens)
+            ->orWhere('movimentacao', $itens)
+            ->orWhere('local', $itens)
+            ->orderBy('created_at', 'ASC')
+            ->get();
             
         }
 
