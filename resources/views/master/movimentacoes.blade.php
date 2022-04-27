@@ -66,7 +66,7 @@
 
                         <tbody>
 
-                            @if($itens)
+                            @if($itens && count($itens) > 0)
 
                                 @foreach($itens as $item)
                                     <tr>
