@@ -3,7 +3,7 @@
 @section('title', 'GoControle')
 
 @section('content_header')
-    <h1><i class="fas fa-map-marker"></i> Endereços</h1>
+    <h1><i class="fas fa-map-marker-alt"></i> Endereços</h1>
 @stop
 
 @section('content')
