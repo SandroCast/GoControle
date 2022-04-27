@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\EnderecoMaster;
 use App\Models\Master;
+use App\Models\Iten;
 
 class MasterController extends Controller
 {
