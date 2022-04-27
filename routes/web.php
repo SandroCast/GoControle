@@ -33,4 +33,4 @@ Route::post('/estoque/endereco/delete/{id}', [MasterController::class, 'endereco
 Route::get('/estoque/buscar', [MasterController::class, 'buscar'])->name('buscar')->middleware('auth');
 Route::post('/estoque/retirar/{url}/{id}', [MasterController::class, 'retirar'])->name('retirar')->middleware('auth');
 Route::get('/estoque/alocar', [MasterController::class, 'alocar'])->name('alocar')->middleware('auth');
-
+Route::get('/estoque/movimentacoes', [MasterController::class, 'movimentacoes'])->name('movimentacoes')->middleware('auth');

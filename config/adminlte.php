@@ -290,6 +290,11 @@ return [
                     'icon_color'    => 'cyan',
                     'url'  => '/estoque/enderecos',
                 ],
+                [
+                    'text' => 'Movimentações',
+                    'icon_color'    => 'cyan',
+                    'url'  => '/estoque/movimentacoes',
+                ],
 
             ],
 

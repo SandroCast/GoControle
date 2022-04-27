@@ -273,6 +273,20 @@ class MasterController extends Controller
 
     }
     
+
+    public function movimentacoes()
+    {
+
+
+
+
+
+
+
+
+
+        return view('master.movimentacoes');  
+    }
     
     
     
