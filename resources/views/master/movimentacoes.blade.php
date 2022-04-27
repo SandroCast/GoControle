@@ -3,7 +3,7 @@
 @section('title', 'GoControle')
 
 @section('content_header')
-    
+    <h1><i class="fas-arrow-up-arrow-down"></i> Movimentações Master</h1>
 @stop
 
 @section('content')
