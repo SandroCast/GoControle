@@ -196,6 +196,8 @@ class MasterController extends Controller
 
     public function alocar()
     {
+        $user = auth()->user();
+
         $codigo = request('codigo');
         $item = request('item');
         $qtd = request('quantidade');
@@ -250,6 +252,14 @@ class MasterController extends Controller
 
                 if(count($master) > 0){
 
+                    $kardex = new Kardex;
+                    $kardex->item = $master->first()->secundario;
+                    $kardex->usuario = $user->name;
+                    $kardex->movimentacao = 'E';
+                    $kardex->local = $master->first()->endereco_nome;
+                    $kardex->qtde = $qtd;
+                    $kardex->save();
+
                     $master->first()->quantidade = $master->first()->quantidade + $qtd;
     
                     $master->first()->save();
@@ -257,9 +267,15 @@ class MasterController extends Controller
                     return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
                 }else{
 
+                    $kardex = new Kardex;
+                    $kardex->item = $master->first()->secundario;
+                    $kardex->usuario = $user->name;
+                    $kardex->movimentacao = 'E';
+                    $kardex->local = $master->first()->endereco_nome;
+                    $kardex->qtde = $qtd;
+                    $kardex->save();
 
                     $novo = new Master;
-
                     $novo->item_id = $item->curto;
                     $novo->primario = $item->primario;
                     $novo->secundario = $item->secundario;
