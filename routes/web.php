@@ -34,25 +34,3 @@ Route::get('/estoque/buscar', [MasterController::class, 'buscar'])->name('buscar
 Route::post('/estoque/retirar/{url}/{id}', [MasterController::class, 'retirar'])->name('retirar')->middleware('auth');
 Route::get('/estoque/alocar', [MasterController::class, 'alocar'])->name('alocar')->middleware('auth');
 
-
-
-
-
-
-Route::get('/estoque/conferencia/dashboard', [EstoqueController::class, 'dashboard'])->name('estoque_dashboard')->middleware('auth');
-Route::get('/estoque/conferencia/dashboard/itens/{grife}', [EstoqueController::class, 'dashboard_itens'])->name('estoque_dashboard_itens')->middleware('auth');
-
-Route::get('/estoque', [EstoqueController::class, 'index'])->name('estoque')->middleware('auth');
-Route::get('/estoque/alameda', [EstoqueController::class, 'show'])->name('estoque_alameda')->middleware('auth');
-Route::get('/estoque/alameda/lote', [EstoqueController::class, 'lote_show'])->name('estoque_alameda_lote')->middleware('auth');
-Route::get('/estoque/armazenamento/alocar', [EstoqueController::class, 'alocar'])->name('estoque_alocar')->middleware('auth');
-Route::get('/estoque/armazenamento/enderecos', [EstoqueController::class, 'enderecos'])->name('estoque_enderecos')->middleware('auth');
-Route::get('/estoque/armazenamento/enderecos/editar/{id}', [EstoqueController::class, 'editar'])->name('estoque_enderecos_editar')->middleware('auth');
-Route::get('/estoque/armazenamento/enderecos/editar/excluir/{id}', [EstoqueController::class, 'excluir'])->name('estoque_enderecos_editar_excluir')->middleware('auth');
-Route::post('/estoque/armazenamento/enderecos/editar/{id}', [EstoqueController::class, 'editar_store'])->name('estoque_enderecos_editar_store')->middleware('auth');
-
-Route::post('/estoque/armazenamento/enderecos/novo/criar', [EstoqueController::class, 'criar'])->name('estoque_enderecos_novo_criar')->middleware('auth');
-Route::get('/estoque/armazenamento/buscar', [EstoqueController::class, 'buscar'])->name('estoque_buscar')->middleware('auth');
-Route::get('/estoque/armazenamento/retirar/{id}', [EstoqueController::class, 'retirar'])->name('estoque_retirar')->middleware('auth');
-
-
