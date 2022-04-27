@@ -253,10 +253,10 @@ class MasterController extends Controller
                 if(count($master) > 0){
 
                     $kardex = new Kardex;
-                    $kardex->item = $master->first()->secundario;
+                    $kardex->item = ' ';
                     $kardex->usuario = $user->name;
                     $kardex->movimentacao = 'E';
-                    $kardex->local = $master->first()->endereco_nome;
+                    $kardex->local = ' ';
                     $kardex->qtde = $qtd;
                     $kardex->save();
 
@@ -268,10 +268,10 @@ class MasterController extends Controller
                 }else{
 
                     $kardex = new Kardex;
-                    $kardex->item = $master->first()->secundario;
+                    $kardex->item = ' ';
                     $kardex->usuario = $user->name;
                     $kardex->movimentacao = 'E';
-                    $kardex->local = $master->first()->endereco_nome;
+                    $kardex->local = ' ';
                     $kardex->qtde = $qtd;
                     $kardex->save();
 
