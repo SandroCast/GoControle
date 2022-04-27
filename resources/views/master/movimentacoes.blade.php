@@ -75,7 +75,7 @@
                                         <td>{{$item->local}}</td>
                                         <td>{{$item->qtde}}</td>
                                         <td>{{$item->usuario}}</td>
-                                        <td>{{$item->created_at}}</td>
+                                        <td>{!! date('d/m/Y H:i', strtotime($item->created_at)) !!}</td>
                                     </tr>
                         
                                 @endforeach
