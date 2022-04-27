@@ -111,7 +111,7 @@
 
         <form action="/estoque/armazenamento/alocar" method="GET" enctype="multipart/form-data">
             <div class="form-group m-4">
-                <label id="lab_codigo" class="d-inline m-3 titulo" for="codigo">Código Endereço</label>
+                <label id="lab_codigo" class="d-inline m-3 titulo" for="codigo">Endereço</label>
                 @if($endereco && count($endereco) > 0)
                 <input style="background-color: #E8F0FE;" type="text" class="d-inline codigo w-25" name="codigo" value="{{ $codigo }}" disabled>
                 <a href="/estoque/armazenamento/alocar" class="bt_cancelar">Cancelar</a>

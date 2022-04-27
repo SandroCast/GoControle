@@ -221,6 +221,9 @@ class MasterController extends Controller
 
         }
 
+
+        echo $endereco;
+        exit;
     
 
         if($item){
