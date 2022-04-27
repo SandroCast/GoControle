@@ -79,13 +79,13 @@
                                     @method('POST')
                                     @csrf
                                 <td>
-                                    <input type="text" name="quantidade" required>
+                                    <input type="number" name="quantidade" required>
                                 </td>
                                 <td>
                                     <input type="password" name="senha" required>
                                 </td>
                                 <td>
-                                    <input style="margin-left:15px;" class="btn btn-danger btn-sm" type="submit" value="Retirar">
+                                    <input class="btn btn-danger btn-sm" type="submit" value="Retirar">
                                 </td>
                                 </form>
                                 
