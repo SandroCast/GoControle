@@ -38,12 +38,10 @@
     @endif
 
     <div class="card card-widget card-body">
-        <div class="row">
-            <form action="" method="GET">
-                <input style="width: 50%; display:inline;" type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
-                <button style="display:inline;"  class="btn btn-default btn-flat">Buscar</button>
-            </form>
-        </div>    
+        <form action="" method="GET">
+            <input style="width: 50%; display:inline;" type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
+            <button style="display:inline;"  class="btn btn-default btn-flat">Buscar</button>
+        </form>
     </div>
 
 
