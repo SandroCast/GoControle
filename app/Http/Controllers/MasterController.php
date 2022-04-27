@@ -215,6 +215,10 @@ class MasterController extends Controller
                 ['endereco_id', $endereco->first()->id]
 
             ])->get();
+
+            echo $limit;
+            exit;
+            
             if(count($limit) > 0 && ceil($qtd / 12) > $endereco->first()->capacidade - $limit->sum('qtd_caixa') ){
                 return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Quantidade ultrapassa o limite suportado.');
             }
