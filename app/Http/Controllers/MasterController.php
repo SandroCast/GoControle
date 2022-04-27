@@ -274,18 +274,24 @@ class MasterController extends Controller
     }
     
 
-    public function movimentacoes()
+    public function movimentacoes(Request $request)
     {
 
+        $busca = request('busca');
+
+        if($busca) {
+
+            $itens = \DB::connection('mysql')->table('kardex_masters')->where('item', $busca)
+            ->orWhere('usuario', $busca)
+            ->orWhere('movimentacao', $busca)
+            ->orWhere('local', $busca)
+            ->orderBy('created_at', 'ASC')
+            ->get();
+            
+        }
 
 
-
-
-
-
-
-
-        return view('master.movimentacoes');  
+        return view('master.movimentacoes', compact('itens'));  
     }
     
     
