@@ -43,15 +43,8 @@
     <div class="card card-widget card-body">
         <div class="row">
             <form action="" method="GET">
-                <div class="col-md-6">
-                    <input type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
-                </div>
-                
-                <div class="col-md-2">
-                    <button class="btn btn-default btn-flat">Buscar</button>
-                </div>
-                <div class="col-md-4">
-                </div>
+                <input type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
+                <button class="btn btn-default btn-flat">Buscar</button>
             </form>
         </div>    
     </div>
