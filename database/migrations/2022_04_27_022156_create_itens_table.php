@@ -15,6 +15,12 @@ class CreateItensTable extends Migration
     {
         Schema::create('itens', function (Blueprint $table) {
             $table->id();
+            $table->integer('curto');
+            $table->text('secundario');
+            $table->text('primario');
+            $table->text('local_prateleira');
+            $table->text('tipo');
+            $table->text('grife');
             $table->timestamps();
         });
     }
