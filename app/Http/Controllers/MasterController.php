@@ -257,7 +257,6 @@ class MasterController extends Controller
 
                     $novo->save();
 
-                    exit;
 
                     return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
                 }

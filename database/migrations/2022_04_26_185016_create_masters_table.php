@@ -21,7 +21,7 @@ class CreateMastersTable extends Migration
             $table->text('tipoitem');
             $table->text('grife');
             $table->integer('endereco_id');
-            $table->integer('endereco_nome');
+            $table->text('endereco_nome');
             $table->integer('quantidade');
             $table->timestamps();
         });
