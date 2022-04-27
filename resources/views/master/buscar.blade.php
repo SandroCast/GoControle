@@ -59,6 +59,8 @@
                             <th>Saldo Master</th>
                             <th>Endereço</th>
                             <th>Alocada</th>
+                            <th>Retirada</th>
+                            <th>Senha</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
@@ -72,16 +74,21 @@
                                 <td>{{ $saldo->where('secundario', $item->secundario)->sum('quantidade') }}</td>
                                 <td>{{ $item->endereco->endereco }}</td>
                                 <td>{{ $item->quantidade }}</td>
-                                <td>
-                                    <form action="/estoque/retirar/{{$url}}/{{$item->id}}"  method="POST">
-                                        @method('POST')
-                                        @csrf
-                                        <input type="text" name="quantidade" required>
-                                        <input type="password" name="senha" required>
-                                        <input style="margin-left:15px;" class="btn btn-danger btn-sm" type="submit" value="Retirar">
-                                    </form>
-                                </td>
 
+                                <form action="/estoque/retirar/{{$url}}/{{$item->id}}"  method="POST">
+                                    @method('POST')
+                                    @csrf
+                                <td>
+                                    <input type="text" name="quantidade" required>
+                                </td>
+                                <td>
+                                    <input type="password" name="senha" required>
+                                </td>
+                                <td>
+                                    <input style="margin-left:15px;" class="btn btn-danger btn-sm" type="submit" value="Retirar">
+                                </td>
+                                </form>
+                                
                             </tr>
                         @endforeach
                     </tbody>
