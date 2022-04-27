@@ -261,13 +261,16 @@ class MasterController extends Controller
 
                     $novo = new Master;
 
-                    $novo->endereco_id = $endereco->first()->id;
+                    $novo->item_id = $item->curto;
+                    $novo->primario = $item->primario;
                     $novo->secundario = $item->secundario;
                     $novo->tipoitem = $item->tipo;
                     $novo->grife = $item->grife;
+                    $novo->endereco_id = $endereco->first()->id;
+                    $novo->endereco_nome = $endereco->first()->endereco;
                     $novo->quantidade = $qtd;
                     $novo->qtd_caixa = ceil($qtd / 12);
-                    
+
                     $novo->save();
 
                     return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
