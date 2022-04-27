@@ -37,23 +37,11 @@
     <p class="msg" id="msg2">{{ session('msg2') }}</p>
     @endif
 
-
-
-
     <div class="card card-widget card-body">
-        <div class="row">
-            <form action="" method="GET">
-                <div class="col-md-6">
-                    <input type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
-                </div>
-                
-                <div class="col-md-2">
-                    <button class="btn btn-default btn-flat">Buscar</button>
-                </div>
-                <div class="col-md-4">
-                </div>
-            </form>
-        </div>    
+        <form action="" method="GET">
+            <input style="width: 50%; display:inline; margin-right: 10px;" type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
+            <button style="display:inline;"  class="btn btn-default btn-flat">Buscar</button>
+        </form>
     </div>
 
 

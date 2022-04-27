@@ -60,7 +60,6 @@
                                 <th>ID</th>
                                 <th>Endereço</th>
                                 <th>Descrição</th>
-                                <th>Capacidade</th>
                                 <th>Ação</th>
                             </tr>                
                         </thead>
@@ -74,7 +73,6 @@
                                         <td>{{$endereco->id}}</td>
                                         <td>{{$endereco->endereco}}</td>
                                         <td>{{$endereco->descricao}}</td>
-                                        <td>{{$endereco->capacidade}}</td>
                                         <td>
                                             <a href="/estoque/endereco/editar/{{ $endereco->id }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
                                         </td>

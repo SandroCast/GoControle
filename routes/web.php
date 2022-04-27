@@ -32,7 +32,7 @@ Route::post('/estoque/endereco/update/{id}', [MasterController::class, 'endereco
 Route::post('/estoque/endereco/delete/{id}', [MasterController::class, 'endereco_delete'])->name('endereco_delete')->middleware('auth');
 Route::get('/estoque/buscar', [MasterController::class, 'buscar'])->name('buscar')->middleware('auth');
 Route::post('/estoque/retirar/{url}/{id}', [MasterController::class, 'retirar'])->name('retirar')->middleware('auth');
-
+Route::get('/estoque/alocar', [MasterController::class, 'alocar'])->name('alocar')->middleware('auth');
 
 
 

@@ -51,9 +51,6 @@
                 <label for="Nome">Descrição Breve</label>
                 <input name="descricao" class="form-control form-control" type="text" placeholder="Digita algo a mais sobre o endereço" required>
                 <br>
-                <label for="Nome">Capacidade Máxima</label>
-                <input name="capacidade" class="form-control form-control" type="number" placeholder="Digita quantas caixinhas brancas esse endereço suporta" required>
-                <br>
                 <label for="Nome">Status</label>
                 <select class="form-control" name="bloqueio">
                     <option value="0" selected="">Desbloqueado</option>

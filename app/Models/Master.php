@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Master extends Model
 {
     use HasFactory;
-
+    
+    protected $connection = 'mysql';
+    protected $table = 'masters';
 
     public function endereco() {
 
-        return $this->belongsTo('App\EnderecoMaster', 'endereco_id', 'id');
+        return $this->belongsTo('App\Models\EnderecoMaster', 'endereco_id', 'id');
 
     }
 

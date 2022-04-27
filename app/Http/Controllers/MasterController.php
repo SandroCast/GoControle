@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\EnderecoMaster;
 use App\Models\Master;
+use App\Models\Iten;
 
 class MasterController extends Controller
 {
@@ -21,7 +22,6 @@ class MasterController extends Controller
     {
         $endereco = request('endereco');
         $descricao = request('descricao');
-        $capacidade = request('capacidade');
         $bloqueio = request('bloqueio');
 
         $verificar = \DB::connection('mysql')->table('enderecos_masters')->where('endereco', $endereco)->first();
@@ -35,7 +35,6 @@ class MasterController extends Controller
 
             $novo->endereco = $endereco;
             $novo->descricao = $descricao;
-            $novo->capacidade = $capacidade;
             $novo->bloqueio = $bloqueio;
     
             $novo->save();
@@ -88,12 +87,10 @@ class MasterController extends Controller
 
         $endereco = request('endereco');
         $descricao = request('descricao');
-        $capacidade = request('capacidade');
         $bloqueio = request('bloqueio');
 
         $store->endereco = $endereco;
         $store->descricao = $descricao;
-        $store->capacidade = $capacidade;
         $store->bloqueio = $bloqueio;
         $store->save();
         
@@ -122,7 +119,7 @@ class MasterController extends Controller
     
     }
 
-    public function buscar($id, Request $request)
+    public function buscar(Request $request)
     {
 
         $itens = request('item');
@@ -172,7 +169,6 @@ class MasterController extends Controller
 
 
                 $item->quantidade = $item->quantidade - $qtd;
-                $item->qtd_caixa = $item->qtd_caixa - ceil($qtd / 12);
 
                 $item->save();
 
@@ -184,45 +180,8 @@ class MasterController extends Controller
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function alocar()
     {
-
-
         $codigo = request('codigo');
         $item = request('item');
         $qtd = request('quantidade');
@@ -232,42 +191,36 @@ class MasterController extends Controller
 
         if($codigo) {
 
-            $endereco = Endereco::where([
-                ['id', 'like', $codigo]
-
+            $endereco = EnderecoMaster::where([
+                ['id', $codigo]
+            ])->orWhere([
+                ['endereco','LIKE', $codigo]
             ])->get();
 
             if(count($endereco) < 1){
-                    return redirect('/estoque/armazenamento/alocar')->with('msg2', 'Local não encontrado.');
+                    return redirect('/estoque/alocar')->with('msg2', 'Local não encontrado.');
             }
             if($endereco->first()->bloqueio == 1 ){
-                    return redirect('/estoque/armazenamento/alocar')->with('msg2', 'Este local está temporariamente BLOQUEADO.');
+                    return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente BLOQUEADO.');
             }
             if($endereco->first()->bloqueio == 2 ){
-                    return redirect('/estoque/armazenamento/alocar')->with('msg2', 'Este local está temporariamente INATIVO.');
-            }
-            $limit = Master::where([
-                ['endereco_id', 'like', $codigo]
-
-            ])->get();
-            if(count($limit) > 0 && ceil($qtd / 12) > $endereco->first()->capacidade - $limit->sum('qtd_caixa') ){
-                return redirect('/estoque/armazenamento/alocar?codigo='.$codigo)->with('msg2', 'Quantidade ultrapassa o limite suportado.');
+                    return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente INATIVO.');
             }
 
         }
 
-    
+
 
         if($item){
 
             $item = Iten::where([
-                ['id', 'like', $item]
+                ['curto', $item]
 
             ])->orWhere([
-                ['primario', 'like', $item]
+                ['primario', $item]
 
             ])->orWhere([
-                ['secundario', 'like', $item]
+                ['secundario', $item]
 
             ])->first();
 
@@ -275,8 +228,8 @@ class MasterController extends Controller
             if($item) {
 
             $master = Master::Where([
-                ['secundarioitem', 'like', $item->secundario],
-                ['endereco_id', 'like', $codigo]
+                ['secundario', $item->secundario],
+                ['endereco_id', $endereco->first()->id]
 
             ])->get();
 
@@ -286,31 +239,32 @@ class MasterController extends Controller
 
 
                     $master->first()->quantidade = $master->first()->quantidade + $qtd;
-                    $master->first()->qtd_caixa = $master->first()->qtd_caixa + ceil($qtd / 12);
     
                     $master->first()->save();
 
-                    return redirect('/estoque/armazenamento/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                    return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
                 }else{
 
 
                     $novo = new Master;
 
-                    $novo->endereco_id = $codigo;
-                    $novo->secundarioitem = $item->secundario;
-                    $novo->tipoitem = $item->tipoitem;
+                    $novo->item_id = $item->curto;
+                    $novo->primario = $item->primario;
+                    $novo->secundario = $item->secundario;
+                    $novo->tipoitem = $item->tipo;
                     $novo->grife = $item->grife;
+                    $novo->endereco_id = $endereco->first()->id;
+                    $novo->endereco_nome = $endereco->first()->endereco;
                     $novo->quantidade = $qtd;
-                    $novo->qtd_caixa = ceil($qtd / 12);
-                    
+
                     $novo->save();
 
-                    return redirect('/estoque/armazenamento/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                    return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
                 }
 
             }else{
 
-                return redirect('/estoque/armazenamento/alocar?codigo='.$codigo)->with('msg2', 'Item não encontrado.');
+                return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Item não encontrado.');
                 
             }
 

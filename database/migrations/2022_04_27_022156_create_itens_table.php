@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnderecosMastersTable extends Migration
+class CreateItensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateEnderecosMastersTable extends Migration
      */
     public function up()
     {
-        Schema::create('enderecos_masters', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('endereco');
-            $table->text('descricao');
-            $table->integer('bloqueio');
+        Schema::create('itens', function (Blueprint $table) {
+            $table->id();
+            $table->integer('curto');
+            $table->text('secundario');
+            $table->text('primario');
+            $table->text('local_prateleira');
+            $table->text('tipo');
+            $table->text('grife');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateEnderecosMastersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enderecos_masters');
+        Schema::dropIfExists('itens');
     }
 }
