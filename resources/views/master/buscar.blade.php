@@ -39,7 +39,7 @@
 
     <div class="card card-widget card-body">
         <form action="" method="GET">
-            <input style="width: 50%; display:inline;" type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
+            <input style="width: 50%; display:inline; margin-left: 10px;" type="text" name="item" placeholder="Digite o Item para Buscar"  autofocus="autofocus" value="" class="form-control">
             <button style="display:inline;"  class="btn btn-default btn-flat">Buscar</button>
         </form>
     </div>
