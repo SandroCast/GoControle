@@ -77,6 +77,7 @@
                                         @method('POST')
                                         @csrf
                                         <input type="text" name="quantidade" required>
+                                        <input type="password" name="senha" required>
                                         <input style="margin-left:15px;" class="btn btn-danger btn-sm" type="submit" value="Retirar">
                                     </form>
                                 </td>
