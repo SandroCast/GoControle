@@ -244,11 +244,6 @@ class MasterController extends Controller
                 }else{
 
 
-                    echo $item->curto;
-                    echo '<br>';
-                    echo $endereco->first()->id;
-                    exit;
-
                     $novo = new Master;
 
                     $novo->item_id = $item->curto;
@@ -261,6 +256,8 @@ class MasterController extends Controller
                     $novo->quantidade = $qtd;
 
                     $novo->save();
+
+                    exit;
 
                     return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
                 }
