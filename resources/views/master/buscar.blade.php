@@ -59,7 +59,7 @@
                             <th>Saldo Master</th>
                             <th>Endereço</th>
                             <th>Alocada</th>
-                            <th>Retirada</th>
+                            <th style="width:50px;">Retirada</th>
                             <th>Senha</th>
                             <th>Ação</th>
                         </tr>
