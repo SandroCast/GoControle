@@ -234,6 +234,10 @@ class MasterController extends Controller
             ])->get();
 
 
+            echo $master;
+            exit;
+
+
 
                 if(count($master) > 0){
 
