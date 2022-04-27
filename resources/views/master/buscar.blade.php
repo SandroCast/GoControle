@@ -59,9 +59,9 @@
                             <th>Saldo Master</th>
                             <th>Endereço</th>
                             <th>Alocada</th>
-                            <th style="max-width:50px;">Retirada</th>
-                            <th style="max-width:50px;">Senha</th>
-                            <th style="max-width:30px;">Ação</th>
+                            <th style="width:20%;">Retirada</th>
+                            <th style="width:20%;">Senha</th>
+                            <th style="width:20%;">Ação</th>
                         </tr>
                     </thead>
 
@@ -79,10 +79,10 @@
                                     @method('POST')
                                     @csrf
                                 <td>
-                                    <input type="number" name="quantidade" required>
+                                    <input  style="width:20%;" type="number" name="quantidade" required>
                                 </td>
                                 <td>
-                                    <input type="password" name="senha" required>
+                                    <input  style="width:20%;" type="password" name="senha" required>
                                 </td>
                                 <td>
                                     <input class="btn btn-danger btn-sm" type="submit" value="Retirar">
