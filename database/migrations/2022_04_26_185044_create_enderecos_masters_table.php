@@ -17,7 +17,6 @@ class CreateEnderecosMastersTable extends Migration
             $table->increments('id');
             $table->text('endereco');
             $table->text('descricao');
-            $table->integer('capacidade');
             $table->integer('bloqueio');
             $table->timestamps();
         });

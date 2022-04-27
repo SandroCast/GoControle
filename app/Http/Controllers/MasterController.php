@@ -212,13 +212,13 @@ class MasterController extends Controller
                     return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente INATIVO.');
             }
             $limit = Master::where([
-                ['endereco_id', $endereco->first()->id]
+                ['endereco_id', $endereco->id]
 
             ])->get();
 
             echo $limit;
             exit;
-            
+
             if(count($limit) > 0 && ceil($qtd / 12) > $endereco->first()->capacidade - $limit->sum('qtd_caixa') ){
                 return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Quantidade ultrapassa o limite suportado.');
             }

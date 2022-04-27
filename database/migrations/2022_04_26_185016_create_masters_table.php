@@ -23,7 +23,6 @@ class CreateMastersTable extends Migration
             $table->integer('endereco_id');
             $table->integer('endereco_nome');
             $table->integer('quantidade');
-            $table->integer('qtd_caixa');
             $table->timestamps();
         });
     }
