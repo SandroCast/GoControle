@@ -281,13 +281,16 @@ class MasterController extends Controller
 
         if($busca) {
 
-            $itens = \DB::connection('mysql')->table('kardex_masters')
-            ->where('item','like', $busca)
-            ->orWhere('usuario','like', $busca)
-            ->orWhere('movimentacao','like', $busca)
-            ->orWhere('local','like', $busca)
-            ->orderBy('created_at', 'ASC')
-            ->get();
+            $itens = \DB::connection('mysql')->table('kardex_masters')->where([
+                ['item','like', $busca]
+            ])->orWhere([
+                ['usuario','like', $busca]
+            ])->orWhere([
+                ['movimentacao','like', $busca]
+            ])->orWhere([
+                ['local','like', $busca]
+            ])->orderBy('created_at', 'ASC')->get();
+
             
         }
 
