@@ -236,10 +236,6 @@ class MasterController extends Controller
 
                 if(count($master) > 0){
 
-
-                    echo "maior q 0";
-                    exit;
-
                     $master->first()->quantidade = $master->first()->quantidade + $qtd;
     
                     $master->first()->save();
@@ -247,9 +243,11 @@ class MasterController extends Controller
                     return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
                 }else{
 
-                    echo "novo";
-                    exit;
 
+                    echo $item->curto;
+                    echo '<br>';
+                    echo $endereco->first()->id;
+                    exit;
 
                     $novo = new Master;
 
