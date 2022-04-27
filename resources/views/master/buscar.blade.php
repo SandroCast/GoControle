@@ -3,7 +3,7 @@
 @section('title', 'GoControle')
 
 @section('content_header')
-    <h1><i class="fa fa-search"></i> Buscar Itens no Estoque</h1>
+    <h1><i class="fas fa-search"></i> Buscar Itens no Estoque</h1>
 @stop
 
 @section('content')
