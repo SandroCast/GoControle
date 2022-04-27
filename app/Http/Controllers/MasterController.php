@@ -234,7 +234,7 @@ class MasterController extends Controller
             ])->get();
 
 
-            echo $master;
+            echo $item;
             exit;
 
 
