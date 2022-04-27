@@ -199,8 +199,8 @@ class MasterController extends Controller
             $endereco = EnderecoMaster::where([
                 ['id', $codigo]
             ])->orWhere([
-                ['endereco', $codigo]
-            ])->first();
+                ['endereco','LIKE', $codigo]
+            ])->get();
 
             if(count($endereco) < 1){
                     return redirect('/estoque/alocar')->with('msg2', 'Local não encontrado.');
@@ -212,7 +212,7 @@ class MasterController extends Controller
                     return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente INATIVO.');
             }
             $limit = Master::where([
-                ['endereco_id', $endereco->id]
+                ['endereco_id', $endereco->first()->id]
 
             ])->get();
             if(count($limit) > 0 && ceil($qtd / 12) > $endereco->first()->capacidade - $limit->sum('qtd_caixa') ){
