@@ -59,9 +59,9 @@
                             <th>Saldo Master</th>
                             <th>Endereço</th>
                             <th>Alocada</th>
-                            <th style="width:50px;">Retirada</th>
-                            <th>Senha</th>
-                            <th>Ação</th>
+                            <th style="max-width:50px;">Retirada</th>
+                            <th style="max-width:50px;">Senha</th>
+                            <th style="max-width:30px;">Ação</th>
                         </tr>
                     </thead>
 
