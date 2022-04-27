@@ -50,9 +50,6 @@
             <label for="Nome">Descrição Breve</label>
             <input value="{{ $endereco->descricao }}" name="descricao" class="form-control form-control" type="text" placeholder="Digita algo a mais sobre o endereço" required>
             <br>
-            <label for="Nome">Capacidade Máxima</label>
-            <input value="{{ $endereco->capacidade }}" name="capacidade" class="form-control form-control" type="number" placeholder="Digita quantas caixinhas brancas esse endereço suporta" required>
-            <br>
             <label for="Nome">Status</label>
             <select class="form-control" name="bloqueio">
                 <option value="0" @php if($endereco->bloqueio == 0){ echo "selected=''";} @endphp>Desbloqueado</option>

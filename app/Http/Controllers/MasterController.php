@@ -22,7 +22,6 @@ class MasterController extends Controller
     {
         $endereco = request('endereco');
         $descricao = request('descricao');
-        $capacidade = request('capacidade');
         $bloqueio = request('bloqueio');
 
         $verificar = \DB::connection('mysql')->table('enderecos_masters')->where('endereco', $endereco)->first();
@@ -36,7 +35,6 @@ class MasterController extends Controller
 
             $novo->endereco = $endereco;
             $novo->descricao = $descricao;
-            $novo->capacidade = $capacidade;
             $novo->bloqueio = $bloqueio;
     
             $novo->save();
@@ -89,12 +87,10 @@ class MasterController extends Controller
 
         $endereco = request('endereco');
         $descricao = request('descricao');
-        $capacidade = request('capacidade');
         $bloqueio = request('bloqueio');
 
         $store->endereco = $endereco;
         $store->descricao = $descricao;
-        $store->capacidade = $capacidade;
         $store->bloqueio = $bloqueio;
         $store->save();
         
@@ -173,7 +169,6 @@ class MasterController extends Controller
 
 
                 $item->quantidade = $item->quantidade - $qtd;
-                $item->qtd_caixa = $item->qtd_caixa - ceil($qtd / 12);
 
                 $item->save();
 
@@ -211,17 +206,6 @@ class MasterController extends Controller
             if($endereco->first()->bloqueio == 2 ){
                     return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente INATIVO.');
             }
-            $limit = Master::where([
-                ['endereco_id', $endereco->id]
-
-            ])->get();
-
-            echo $limit;
-            exit;
-
-            if(count($limit) > 0 && ceil($qtd / 12) > $endereco->first()->capacidade - $limit->sum('qtd_caixa') ){
-                return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Quantidade ultrapassa o limite suportado.');
-            }
 
         }
 
@@ -255,7 +239,6 @@ class MasterController extends Controller
 
 
                     $master->first()->quantidade = $master->first()->quantidade + $qtd;
-                    $master->first()->qtd_caixa = $master->first()->qtd_caixa + ceil($qtd / 12);
     
                     $master->first()->save();
 
@@ -273,7 +256,6 @@ class MasterController extends Controller
                     $novo->endereco_id = $endereco->first()->id;
                     $novo->endereco_nome = $endereco->first()->endereco;
                     $novo->quantidade = $qtd;
-                    $novo->qtd_caixa = ceil($qtd / 12);
 
                     $novo->save();
 
