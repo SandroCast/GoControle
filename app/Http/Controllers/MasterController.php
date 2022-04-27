@@ -316,7 +316,7 @@ class MasterController extends Controller
             ->orWhere('usuario', 'like', $itens. '%')
             ->orWhere('movimentacao', $itens)
             ->orWhere('local', $itens)
-            ->orderBy('created_at', 'ASC')
+            ->orderBy('created_at', 'DESC')
             ->get();
         }
 
