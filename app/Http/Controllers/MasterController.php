@@ -335,7 +335,7 @@ class MasterController extends Controller
             ['id', '>', 0],
             ['secundario', 'LIKE', $item. '%'],
             ['endereco_nome', 'LIKE', '%' .$endereco. '%'],
-            ['grife', $grife]
+            ['grife','LIKE', $grife]
         ])->get();
 
 
