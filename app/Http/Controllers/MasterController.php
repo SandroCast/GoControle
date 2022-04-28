@@ -323,15 +323,23 @@ class MasterController extends Controller
         return view('master.movimentacoes', compact('itens'));  
     }
 
-    public function estoque_lista()
+    public function estoque_lista(Request $request)
     {
 
+        $item = request('item');
+        $endereco = request('endereco');
+        $grife = request('grife');
+
+    
         $masters = Master::where([
-            ['id', '>', 0]
+            ['id', '>', 0],
+            ['secundario', $item],
+            ['endereco_nome', $endereco],
+            ['grife', $grife]
         ])->get();
 
 
-        return view('master.lista', compact('masters'));  
+        return view('master.lista', compact('masters');
 
     }
     
