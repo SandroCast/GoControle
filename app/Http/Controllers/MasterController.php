@@ -326,7 +326,6 @@ class MasterController extends Controller
     public function estoque_lista()
     {
 
-
         $masters = Master::where([
             ['id', '>', 0]
         ])->get();

@@ -22,7 +22,7 @@
                             <td class="item">{{$master->secundario}}</td>
                             <td class="quantidade">{{$master->quantidade}}</td>
                             <td class="endereco">{{$master->endereco_nome}}</td>
-                            <td class="grife">{{$master->item->grife}}</td>
+                            <td class="grife">{{$master->grife}}</td>
                         </tr>
                         
                     @endforeach
