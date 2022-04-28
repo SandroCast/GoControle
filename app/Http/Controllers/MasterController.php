@@ -339,7 +339,7 @@ class MasterController extends Controller
         ])->get();
 
 
-        return view('master.lista', compact('masters');
+        return view('master.lista', compact('masters'));
 
     }
     
