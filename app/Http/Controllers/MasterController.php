@@ -333,8 +333,8 @@ class MasterController extends Controller
     
         $masters = Master::where([
             ['id', '>', 0],
-            ['secundario', $item],
-            ['endereco_nome', $endereco],
+            ['secundario', 'LIKE', $item. '%'],
+            ['endereco_nome', 'LIKE', '%' .$endereco. '%'],
             ['grife', $grife]
         ])->get();
 
