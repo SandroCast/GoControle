@@ -12,6 +12,7 @@
                     <td>Quantidade</td>
                     <td>Endereço</td>
                     <td>Grife</td>
+                    <td>Local</td>
                 </tr>
 
                 @if($masters)
@@ -23,6 +24,7 @@
                             <td class="quantidade">{{$master->quantidade}}</td>
                             <td class="endereco">{{$master->endereco_nome}}</td>
                             <td class="grife">{{$master->grife}}</td>
+                            <td class="local">{{$master->local_prateleira->local_prateleira}}</td>
                         </tr>
                         
                     @endforeach

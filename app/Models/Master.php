@@ -18,5 +18,12 @@ class Master extends Model
 
     }
 
+    public function local_prateleira() {
+
+        return $this->belongsTo('App\Models\Iten', 'masters.secundario', 'itens.secundario');
+
+    }
+
+
 
 }
