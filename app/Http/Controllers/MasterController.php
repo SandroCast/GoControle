@@ -149,6 +149,13 @@ class MasterController extends Controller
         $user = auth()->user();
 
         $qtd = request('quantidade');
+
+        $codigo = request('codigo');
+
+
+
+
+
         
         $item = Master::findOrFail($id);
 
@@ -359,6 +366,14 @@ class MasterController extends Controller
         $user = auth()->user();
         $codigo = request('codigo');
 
+        $exist = Codigo::where('codigo', $codigo)->first();
+
+        if($exist){
+            
+            return redirect('/codigo')->with('msg2', 'Este código já está sendo utilizado.');
+        }
+
+
         $validar = Codigo::where('user_id', $user->id)->first();
 
         if($validar) {
@@ -371,6 +386,7 @@ class MasterController extends Controller
             return redirect('/codigo')->with('msg', 'Código atualizado com sucesso.');
 
         }else{
+
 
             $novo = new Codigo;
             $novo->user_id = $user->id;
