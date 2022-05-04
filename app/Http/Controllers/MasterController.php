@@ -257,56 +257,63 @@ class MasterController extends Controller
 
                 if($item) {
 
-            $codigo_user = Codigo::where('codigo', request('codigo_user'))->first();
 
-            if($codigo_user){
+                    $codigo_user = Codigo::where('codigo', request('codigo_user'))->first();
 
-                $master = Master::Where([
-                    ['secundario', $item->secundario],
-                    ['endereco_id', $endereco->first()->id]
+                    if($codigo_user){
 
-                ])->get();
+                        $master = Master::Where([
+                            ['secundario', $item->secundario],
+                            ['endereco_id', $endereco->first()->id]
+
+                        ])->get();
 
 
-                    if(count($master) > 0){
+                        if(count($master) > 0){
 
-                        $kardex = new Kardex;
-                        $kardex->item = $item->secundario;
-                        $kardex->usuario = $codigo_user->users->name;
-                        $kardex->movimentacao = 'E';
-                        $kardex->local = $endereco->first()->endereco;
-                        $kardex->qtde = $qtd;
-                        $kardex->save();
+                            $kardex = new Kardex;
+                            $kardex->item = $item->secundario;
+                            $kardex->usuario = $codigo_user->users->name;
+                            $kardex->movimentacao = 'E';
+                            $kardex->local = $endereco->first()->endereco;
+                            $kardex->qtde = $qtd;
+                            $kardex->save();
 
-                        $master->first()->quantidade = $master->first()->quantidade + $qtd;
-        
-                        $master->first()->save();
+                            $master->first()->quantidade = $master->first()->quantidade + $qtd;
+            
+                            $master->first()->save();
 
-                        return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                            return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                        }else{
+
+                            $kardex = new Kardex;
+                            $kardex->item = $item->secundario;
+                            $kardex->usuario = $codigo_user->users->name;
+                            $kardex->movimentacao = 'E';
+                            $kardex->local = $endereco->first()->endereco;
+                            $kardex->qtde = $qtd;
+                            $kardex->save();
+
+                            $novo = new Master;
+                            $novo->item_id = $item->curto;
+                            $novo->primario = $item->primario;
+                            $novo->secundario = $item->secundario;
+                            $novo->tipoitem = $item->tipo;
+                            $novo->grife = $item->grife;
+                            $novo->endereco_id = $endereco->first()->id;
+                            $novo->endereco_nome = $endereco->first()->endereco;
+                            $novo->quantidade = $qtd;
+
+                            $novo->save();
+
+
+                            return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                        }
+
                     }else{
 
-                        $kardex = new Kardex;
-                        $kardex->item = $item->secundario;
-                        $kardex->usuario = $codigo_user->users->name;
-                        $kardex->movimentacao = 'E';
-                        $kardex->local = $endereco->first()->endereco;
-                        $kardex->qtde = $qtd;
-                        $kardex->save();
-
-                        $novo = new Master;
-                        $novo->item_id = $item->curto;
-                        $novo->primario = $item->primario;
-                        $novo->secundario = $item->secundario;
-                        $novo->tipoitem = $item->tipo;
-                        $novo->grife = $item->grife;
-                        $novo->endereco_id = $endereco->first()->id;
-                        $novo->endereco_nome = $endereco->first()->endereco;
-                        $novo->quantidade = $qtd;
-
-                        $novo->save();
-
-
-                        return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                        return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Código não encontrado.');
+            
                     }
 
                 }else{
@@ -319,12 +326,6 @@ class MasterController extends Controller
 
             return view('master.alocar', ['endereco' => $endereco, 'codigo' => $codigo]);
 
-
-        }else{
-
-            return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Código não encontrado.');
-
-        }
 
     }
     
