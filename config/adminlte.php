@@ -300,6 +300,14 @@ return [
 
         ],
 
+
+        [
+            'text' => 'Meu Código',
+            'icon'    => 'fas fa-cubes',
+            'url'  => '#',
+        ],
+
+
         /*
         ['header' => 'labels'],
         [
