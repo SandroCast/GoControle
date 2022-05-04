@@ -50,7 +50,7 @@
                     @csrf
 
                     <label for="Nome">Código</label>     
-                    <input type="password" name="codigo" id="senha" value="{{$codigo->codigo}}" placeholder="Digite o Código" required>
+                    <input type="password" name="codigo" id="senha" value="@php if($codigo){echo $codigo->codigo;}@endphp" placeholder="Digite o Código" required>
 
                     <i id="olhoa" onclick="show()" class="far fa-eye"></i>
                     <i id="olhof" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>

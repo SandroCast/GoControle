@@ -350,7 +350,7 @@ class MasterController extends Controller
 
         $codigo = Codigo::where('user_id', $user->id)->first();
 
-
+        
 
         return view('master.codigo', compact('codigo'));
     }
