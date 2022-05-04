@@ -65,6 +65,21 @@
 
 
 <!----------------->
+
+            <script>
+
+                $("#ueEyePass").mousedown(function () {
+                    $("#uePassowrd").attr("type", "text");
+                });
+
+                $("#ueEyePass").mouseup(function () {
+                    $("#uePassowrd").attr("type", "password");
+                });
+
+                </script>
+
+
+
             <div class="form-group col-sm-6 submit-line">
                 <label>Senha:<span class="stf-color-asterisco">*</span></label>
                 <div class="submit-line">
@@ -76,17 +91,7 @@
             </div>
 
 
-            <script>
 
-            $("#ueEyePass").mousedown(function () {
-                $("#uePassowrd").attr("type", "text");
-            });
-
-            $("#ueEyePass").mouseup(function () {
-                $("#uePassowrd").attr("type", "password");
-            });
-
-            </script>
 
 
     <!----------------->
