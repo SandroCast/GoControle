@@ -46,10 +46,10 @@
                 @csrf
 
                 <label for="Nome">Endereço</label>
-                <input name="endereco" class="form-control form-control" type="text" placeholder="Digite o Endereço" required>
+                <input name="endereco" class="form-control" type="text" placeholder="Digite o Endereço" required>
                 <br>
                 <label for="Nome">Descrição Breve</label>
-                <input name="descricao" class="form-control form-control" type="text" placeholder="Digita algo a mais sobre o endereço" required>
+                <input name="descricao" class="form-control" type="text" placeholder="Digita algo a mais sobre o endereço" required>
                 <br>
                 <label for="Nome">Status</label>
                 <select class="form-control" name="bloqueio">
