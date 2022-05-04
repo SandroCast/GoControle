@@ -7,6 +7,7 @@ use App\Models\EnderecoMaster;
 use App\Models\Master;
 use App\Models\Iten;
 use App\Models\Kardex;
+use App\Models\Codigo;
 
 class MasterController extends Controller
 {
@@ -345,14 +346,13 @@ class MasterController extends Controller
 
     public function codigo()
     {
+        $user = auth()->user();
+
+        $codigo = Codigo::where('user_id', $user->id)->first();
 
 
 
-
-
-
-
-        return view('master.codigo');
+        return view('master.codigo', compact('codigo'));
     }
     
     
