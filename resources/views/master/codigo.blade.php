@@ -43,22 +43,7 @@
 
     <center>
 
-        <script>                        
-            function show() {
-                var senha = document.getElementById("senha");
-                var olhoA = document.getElementById("olhoa");
-                var olhoF = document.getElementById("olhof");
-                if (senha.type === "password") {
-                    senha.type = "text";
-                    olhoA.style.display = 'none';
-                    olhoF.style.display = 'inline';
-                } else {
-                    senha.type = "password";
-                    olhoF.style.display = 'none';
-                    olhoA.style.display = 'inline';
-                }
-            }
-        </script>
+
         
         <input type="password" name="senha" id="senha" placeholder="Digite a Senha" required>
 
@@ -69,6 +54,26 @@
         <input type="submit" value="Enviar">
         
     </center>
+
+
+
+
+    <script>                        
+        function show() {
+            var senha = document.getElementById("senha");
+            var olhoA = document.getElementById("olhoa");
+            var olhoF = document.getElementById("olhof");
+            if (senha.type === "password") {
+                senha.type = "text";
+                olhoA.style.display = 'none';
+                olhoF.style.display = 'inline';
+            } else {
+                senha.type = "password";
+                olhoF.style.display = 'none';
+                olhoA.style.display = 'inline';
+            }
+        }
+    </script>
 
     <!----------------->
 
