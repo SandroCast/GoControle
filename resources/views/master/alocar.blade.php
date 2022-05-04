@@ -258,7 +258,9 @@
                     </select>
 
 
-                    <br>
+                 <div>
+                     <br>
+                 </div>
                 <div class="form-group d-inline">
                 <label id="lab_item" class="d-inline titulo" for="codigo_user">Código</label>
                 <input type="password" id="in_item" class="d-inline codigo" name="codigo_user" required>
