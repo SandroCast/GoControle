@@ -46,13 +46,13 @@
         <script>                        
             function show() {
                 var senha = document.getElementById("senha");
-                var olho = document.getElementById("olho");
+                var olhoA = document.getElementById("olhoa");
+                var olhoF = document.getElementById("olhof");
                 if (senha.type === "password") {
                     senha.type = "text";
 
-                    olho.classList.remove('far fa-eye');
-                    olho.classList.add('far fa-eye-slash');
-
+                    olhoA.style.display = 'none';
+    
 
                 } else {
                     senha.type = "password";
@@ -62,8 +62,8 @@
         
         <input type="password" name="senha" id="senha" placeholder="Digite a Senha" required>
 
-        <i id="olho" onclick="show()" class="far fa-eye"></i>
-        <i id="olho" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>
+        <i id="olhoa" onclick="show()" class="far fa-eye"></i>
+        <i id="olhof" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>
         
         <br><br>
         <input type="submit" value="Enviar">
