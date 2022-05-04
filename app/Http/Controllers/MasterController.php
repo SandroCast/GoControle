@@ -361,8 +361,16 @@ class MasterController extends Controller
 
         $codigo = Codigo::where('user_id', $user->id)->first();
 
-    
-        return view('master.codigo', compact('codigo'));
+        $estoque->where('email', 'like', '%estoque%')->get();
+
+        if(count($estoque) > 0){
+            return redirect('/')->with('msg2', 'Usuário sem Permissão.');
+
+        }else{
+            return view('master.codigo', compact('codigo'));
+
+        }
+
     }
     
     public function codigo_update(Request $request)
