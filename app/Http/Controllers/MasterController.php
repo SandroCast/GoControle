@@ -215,104 +215,116 @@ class MasterController extends Controller
         $item = request('item');
         $qtd = request('quantidade');
 
-        $endereco = false;
-        
+        $codigo_user = Codigo::where('codigo', request('codigo_user'))->first();
 
-        if($codigo) {
+        if($codigo_user){
+                
 
-            $endereco = EnderecoMaster::where([
-                ['id', $codigo]
-            ])->orWhere([
-                ['endereco','LIKE', $codigo]
-            ])->get();
+            $endereco = false;
+            
 
-            if(count($endereco) < 1){
-                    return redirect('/estoque/alocar')->with('msg2', 'Local não encontrado.');
-            }
-            if($endereco->first()->bloqueio == 1 ){
-                    return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente BLOQUEADO.');
-            }
-            if($endereco->first()->bloqueio == 2 ){
-                    return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente INATIVO.');
-            }
+            if($codigo) {
 
-        }
+                $endereco = EnderecoMaster::where([
+                    ['id', $codigo]
+                ])->orWhere([
+                    ['endereco','LIKE', $codigo]
+                ])->get();
 
-
-
-        if($item){
-
-            $item = Iten::where([
-                ['curto', $item]
-
-            ])->orWhere([
-                ['primario', $item]
-
-            ])->orWhere([
-                ['secundario', $item]
-
-            ])->first();
-
-
-            if($item) {
-
-            $master = Master::Where([
-                ['secundario', $item->secundario],
-                ['endereco_id', $endereco->first()->id]
-
-            ])->get();
-
-
-                if(count($master) > 0){
-
-                    $kardex = new Kardex;
-                    $kardex->item = $item->secundario;
-                    $kardex->usuario = $user->name;
-                    $kardex->movimentacao = 'E';
-                    $kardex->local = $endereco->first()->endereco;
-                    $kardex->qtde = $qtd;
-                    $kardex->save();
-
-                    $master->first()->quantidade = $master->first()->quantidade + $qtd;
-    
-                    $master->first()->save();
-
-                    return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
-                }else{
-
-                    $kardex = new Kardex;
-                    $kardex->item = $item->secundario;
-                    $kardex->usuario = $user->name;
-                    $kardex->movimentacao = 'E';
-                    $kardex->local = $endereco->first()->endereco;
-                    $kardex->qtde = $qtd;
-                    $kardex->save();
-
-                    $novo = new Master;
-                    $novo->item_id = $item->curto;
-                    $novo->primario = $item->primario;
-                    $novo->secundario = $item->secundario;
-                    $novo->tipoitem = $item->tipo;
-                    $novo->grife = $item->grife;
-                    $novo->endereco_id = $endereco->first()->id;
-                    $novo->endereco_nome = $endereco->first()->endereco;
-                    $novo->quantidade = $qtd;
-
-                    $novo->save();
-
-
-                    return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                if(count($endereco) < 1){
+                        return redirect('/estoque/alocar')->with('msg2', 'Local não encontrado.');
+                }
+                if($endereco->first()->bloqueio == 1 ){
+                        return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente BLOQUEADO.');
+                }
+                if($endereco->first()->bloqueio == 2 ){
+                        return redirect('/estoque/alocar')->with('msg2', 'Este local está temporariamente INATIVO.');
                 }
 
-            }else{
-
-                return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Item não encontrado.');
-                
             }
 
-        }
 
-        return view('master.alocar', ['endereco' => $endereco, 'codigo' => $codigo]);
+
+            if($item){
+
+                $item = Iten::where([
+                    ['curto', $item]
+
+                ])->orWhere([
+                    ['primario', $item]
+
+                ])->orWhere([
+                    ['secundario', $item]
+
+                ])->first();
+
+
+                if($item) {
+
+                $master = Master::Where([
+                    ['secundario', $item->secundario],
+                    ['endereco_id', $endereco->first()->id]
+
+                ])->get();
+
+
+                    if(count($master) > 0){
+
+                        $kardex = new Kardex;
+                        $kardex->item = $item->secundario;
+                        $kardex->usuario = $codigo_user->users->name;
+                        $kardex->movimentacao = 'E';
+                        $kardex->local = $endereco->first()->endereco;
+                        $kardex->qtde = $qtd;
+                        $kardex->save();
+
+                        $master->first()->quantidade = $master->first()->quantidade + $qtd;
+        
+                        $master->first()->save();
+
+                        return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                    }else{
+
+                        $kardex = new Kardex;
+                        $kardex->item = $item->secundario;
+                        $kardex->usuario = $codigo_user->users->name;
+                        $kardex->movimentacao = 'E';
+                        $kardex->local = $endereco->first()->endereco;
+                        $kardex->qtde = $qtd;
+                        $kardex->save();
+
+                        $novo = new Master;
+                        $novo->item_id = $item->curto;
+                        $novo->primario = $item->primario;
+                        $novo->secundario = $item->secundario;
+                        $novo->tipoitem = $item->tipo;
+                        $novo->grife = $item->grife;
+                        $novo->endereco_id = $endereco->first()->id;
+                        $novo->endereco_nome = $endereco->first()->endereco;
+                        $novo->quantidade = $qtd;
+
+                        $novo->save();
+
+
+                        return redirect('/estoque/alocar?codigo='.$codigo)->with('msg', 'Item '.$item->secundario.' alocado com sucesso.');
+                    }
+
+                }else{
+
+                    return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Item não encontrado.');
+                    
+                }
+
+            }
+
+            return view('master.alocar', ['endereco' => $endereco, 'codigo' => $codigo]);
+
+
+        }else{
+
+            return redirect('/estoque/alocar?codigo='.$codigo)->with('msg2', 'Código não encontrado.');
+
+        }
 
     }
     
