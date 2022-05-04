@@ -8,7 +8,36 @@
 
 @section('content')
 
- 
+    <style>
+        .msg {
+                background-color: #D4EDDA;
+                color: #155724;
+                border: 1px solid #C3E6CB;
+                width: 100%;
+                margin-bottom: 15px;
+                text-align: center;
+                padding: 10px;
+        }
+        #msg2 {
+            background-color: #edd4d4;
+            color: #ff0000;
+            border: 1px solid #ffebeb;
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: center;
+            padding: 10px;
+        }
+
+    </style>
+
+    @if(session('msg'))
+    <p class="msg">{{ session('msg') }}</p>
+    @endif
+    @if(session('msg2'))
+    <p class="msg" id="msg2">{{ session('msg2') }}</p>
+    @endif
+
+
 
 @stop
 
