@@ -215,10 +215,6 @@ class MasterController extends Controller
         $item = request('item');
         $qtd = request('quantidade');
 
-        $codigo_user = Codigo::where('codigo', request('codigo_user'))->first();
-
-        if($codigo_user){
-                
 
             $endereco = false;
             
@@ -260,6 +256,10 @@ class MasterController extends Controller
 
 
                 if($item) {
+
+            $codigo_user = Codigo::where('codigo', request('codigo_user'))->first();
+
+            if($codigo_user){
 
                 $master = Master::Where([
                     ['secundario', $item->secundario],
