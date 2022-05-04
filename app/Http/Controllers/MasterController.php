@@ -342,6 +342,18 @@ class MasterController extends Controller
         return view('master.lista', compact('masters'));
 
     }
+
+    public function codigo()
+    {
+
+
+
+
+
+
+
+        return view('master.codigo');
+    }
     
     
     
