@@ -258,6 +258,7 @@
                     </select>
 
 
+                <label id="lab_item" class="d-inline titulo" for="codigo_user">Código</label>
                 <input type="password" id="in_item" class="d-inline codigo" name="codigo_user" required>
 
                 <input class="bt_cancelar" type="submit" value="Alocar">
