@@ -304,7 +304,7 @@ return [
         [
             'text' => 'Meu Código',
             'icon'    => 'fas fa-key',
-            'url'  => '#',
+            'url'  => '/codigo',
         ],
 
 
