@@ -363,7 +363,7 @@ class MasterController extends Controller
         $codigo = Codigo::where('user_id', $user->id)->first();
 
         $estoque = User::where([
-            ['id', $user_id],
+            ['id', $user->id],
             ['email', 'like', '%estoque%']
         ])->get();
 
