@@ -56,7 +56,12 @@
                     <i id="olhof" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>
 
                     <br><br>
-                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                    @if($codigo && count($codigo) > 0)
+                        <button type="submit" class="btn btn-primary">Atualizar</button>
+                    @else
+                        <button type="submit" class="btn btn-primary">Criar</button>
+                    @endif
+
                 </form>
             </div>
 
