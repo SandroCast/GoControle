@@ -51,11 +51,11 @@
                 if (senha.type === "password") {
                     senha.type = "text";
                     olhoA.style.display = 'none';
-                    olhoF.style.display = 'block';
+                    olhoF.style.display = 'inline';
                 } else {
                     senha.type = "password";
                     olhoF.style.display = 'none';
-                    olhoA.style.display = 'block';
+                    olhoA.style.display = 'inline';
                 }
             }
         </script>
