@@ -150,54 +150,61 @@ class MasterController extends Controller
 
         $qtd = request('quantidade');
 
-        $codigo = request('codigo');
+        $codigo = Codigo::where('codigo', request('codigo'))->first();
 
+        if($codigo){
 
-
-
-
+            echo 'ok';
+            exit;
         
-        $item = Master::findOrFail($id);
+            $item = Master::findOrFail($id);
 
-        if($item->endereco->bloqueio == 1){
-            return redirect('/estoque/buscar?item='.$url)->with('msg2', 'Este endereço está BLOQUEADO, desbloqueie e tente novamente.'); 
-        }
-        
-        if($qtd > $item->quantidade){
+            if($item->endereco->bloqueio == 1){
+                return redirect('/estoque/buscar?item='.$url)->with('msg2', 'Este endereço está BLOQUEADO, desbloqueie e tente novamente.'); 
+            }
+            
+            if($qtd > $item->quantidade){
 
 
-            return redirect('/estoque/buscar?item='.$url)->with('msg2', 'Quantidade de retirada maior que a alocada.'); 
-        }else{
-
-            if($qtd == $item->quantidade){
-
-                $kardex = new Kardex;
-                $kardex->item = $item->secundario;
-                $kardex->usuario = $user->name;
-                $kardex->movimentacao = 'S';
-                $kardex->local = $item->endereco_nome;
-                $kardex->qtde = "-".$qtd;
-                $kardex->save();
-
-                $item->delete();
-
-                return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
+                return redirect('/estoque/buscar?item='.$url)->with('msg2', 'Quantidade de retirada maior que a alocada.'); 
             }else{
 
-                $kardex = new Kardex;
-                $kardex->item = $item->secundario;
-                $kardex->usuario = $user->name;
-                $kardex->movimentacao = 'S';
-                $kardex->local = $item->endereco_nome;
-                $kardex->qtde = "-".$qtd;
-                $kardex->save();
+                if($qtd == $item->quantidade){
 
-                $item->quantidade = $item->quantidade - $qtd;
-                $item->save();
+                    $kardex = new Kardex;
+                    $kardex->item = $item->secundario;
+                    $kardex->usuario = $user->name;
+                    $kardex->movimentacao = 'S';
+                    $kardex->local = $item->endereco_nome;
+                    $kardex->qtde = "-".$qtd;
+                    $kardex->save();
 
-                return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
+                    $item->delete();
 
+                    return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
+                }else{
+
+                    $kardex = new Kardex;
+                    $kardex->item = $item->secundario;
+                    $kardex->usuario = $user->name;
+                    $kardex->movimentacao = 'S';
+                    $kardex->local = $item->endereco_nome;
+                    $kardex->qtde = "-".$qtd;
+                    $kardex->save();
+
+                    $item->quantidade = $item->quantidade - $qtd;
+                    $item->save();
+
+                    return redirect('/estoque/buscar?item='.$url)->with('msg', $qtd.' itens '.$item->secundario.' retirado com sucesso.'); 
+
+                }
             }
+
+
+        }else{
+
+            return redirect('/estoque/buscar?item='.$url)->with('msg', 'Código não encontrado.'); 
+
         }
 
     }
