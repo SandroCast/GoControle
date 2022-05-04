@@ -8,6 +8,7 @@ use App\Models\Master;
 use App\Models\Iten;
 use App\Models\Kardex;
 use App\Models\Codigo;
+use App\Models\User;
 
 class MasterController extends Controller
 {
@@ -361,7 +362,10 @@ class MasterController extends Controller
 
         $codigo = Codigo::where('user_id', $user->id)->first();
 
-        $estoque->where('email', 'like', '%estoque%')->get();
+        $estoque = User::where([
+            ['id', $user_id],
+            ['email', 'like', '%estoque%']
+        ])->get();
 
         if(count($estoque) > 0){
             return redirect('/')->with('msg2', 'Usuário sem Permissão.');
