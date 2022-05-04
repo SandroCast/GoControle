@@ -38,3 +38,4 @@ Route::get('/estoque/movimentacoes', [MasterController::class, 'movimentacoes'])
 Route::get('/estoque/lista', [MasterController::class, 'estoque_lista'])->name('estoque_lista')->middleware('auth');
 
 Route::get('/codigo', [MasterController::class, 'codigo'])->name('codigo')->middleware('auth');
+Route::post('/codigo/update', [MasterController::class, 'codigo_update'])->name('codigo_update')->middleware('auth');

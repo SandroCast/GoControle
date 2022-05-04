@@ -350,11 +350,39 @@ class MasterController extends Controller
 
         $codigo = Codigo::where('user_id', $user->id)->first();
 
-        
-
+    
         return view('master.codigo', compact('codigo'));
     }
     
+    public function codigo_update(Request $request)
+    {
+        $user = auth()->user();
+        $codigo = request('codigo');
+
+        $validar = Codigo::where('user_id', $user->id)->first();
+
+        if($validar) {
+
+            $validar->user_id = $user->id;
+            $validar->codigo = $codigo;
+
+            $validar->save();
+
+            return redirect('/codigo')->with('msg', 'Código atualizado com sucesso.');
+
+        }else{
+
+            $novo = new Codigo;
+            $novo->user_id = $user->id;
+            $novo->codigo = $codigo;
+
+            $novo->save();
+
+            return redirect('/codigo')->with('msg', 'Código criado com sucesso.');
+
+        }
+
+    }
     
     
     

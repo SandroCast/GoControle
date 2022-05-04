@@ -45,7 +45,7 @@
 
         <div class="card card-primary" style="max-width:50%;">
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="/codigo/update" method="POST">
                     @method('POST')
                     @csrf
 
