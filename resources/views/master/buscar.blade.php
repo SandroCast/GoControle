@@ -59,7 +59,8 @@
                             <th>Saldo Master</th>
                             <th>Endereço</th>
                             <th>Alocada</th>
-                            <th>Ação</th>
+                            <th>Retirar</th>
+                            <th>Código</th>
                         </tr>
                     </thead>
 
@@ -72,14 +73,18 @@
                                 <td>{{ $saldo->where('secundario', $item->secundario)->sum('quantidade') }}</td>
                                 <td>{{ $item->endereco->endereco }}</td>
                                 <td>{{ $item->quantidade }}</td>
-                                <td>
                                     <form action="/estoque/retirar/{{$url}}/{{$item->id}}"  method="POST">
                                         @method('POST')
                                         @csrf
-                                        <input type="number" name="quantidade" required>
-                                        <input style="margin-left:15px;" class="btn btn-danger btn-sm" type="submit" value="Retirar">
-                                    </form>
+                                <td>
+                                    <input type="number" name="quantidade" required>
                                 </td>
+                                <td>
+                                    <input type="password" name="codigo" required>
+                                    <input style="margin-left:15px;" class="btn btn-danger btn-sm" type="submit" value="Retirar">
+                                </td>
+                                    </form>
+                                
 
                             </tr>
                         @endforeach
