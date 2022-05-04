@@ -43,16 +43,25 @@
 
     <center>
 
+        <div class="card card-primary" style="max-width:50%;">
+            <div class="card-body">
+                <form action="#" method="POST">
+                    @method('POST')
+                    @csrf
 
-        
-        <input type="password" name="senha" id="senha" placeholder="Digite a Senha" required>
+                    <label for="Nome">Código</label>     
+                    <input type="password" name="codigo" id="senha" placeholder="Digite o Código" required>
 
-        <i id="olhoa" onclick="show()" class="far fa-eye"></i>
-        <i id="olhof" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>
-        
-        <br><br>
-        <input type="submit" value="Enviar">
-        
+                    <i id="olhoa" onclick="show()" class="far fa-eye"></i>
+                    <i id="olhof" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                </form>
+            </div>
+
+        </div>
+
     </center>
 
 
@@ -76,32 +85,6 @@
     </script>
 
     <!----------------->
-
-
-    <div class="card card-primary" style="max-width:50%;">
-        <div class="card-body">
-            <form action="/estoque/novo/criar" method="POST">
-                @method('POST')
-                @csrf
-
-                <label for="Nome">Endereço</label>
-                <input name="endereco" class="form-control form-control" type="text" placeholder="Digite o Endereço" required>
-                <br>
-                <label for="Nome">Descrição Breve</label>
-                <input name="descricao" class="form-control form-control" type="text" placeholder="Digita algo a mais sobre o endereço" required>
-                <br>
-                <label for="Nome">Status</label>
-                <select class="form-control" name="bloqueio">
-                    <option value="0" selected="">Desbloqueado</option>
-                    <option value="1">Inativo</option>
-                    <option value="2">Bloqueado</option>
-                </select>
-                <br>
-                <button type="submit" class="btn btn-primary">Criar</button>
-            </form>
-        </div>
-
-    </div>
 
 @stop
 
