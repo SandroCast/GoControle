@@ -51,7 +51,7 @@
 
                     <div class="input-group">
                         <label for="Nome">Código</label>     
-                        <input type="password" class="form-control" name="codigo" id="senha" placeholder="Digite o Código" required>
+                        <input type="password" style="max-width: 60px;" class="form-control" name="codigo" id="senha" placeholder="Digite o Código" required>
 
                         <i id="olhoa" onclick="show()" class="far fa-eye"></i>
                         <i id="olhof" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>
