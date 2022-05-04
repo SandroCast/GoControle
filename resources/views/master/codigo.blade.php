@@ -29,27 +29,6 @@
         }
 
 
-
-
-
-
-
-
-        #myPassword {
-            width: 150px;
-            padding-right: 20px;
-        }
-        
-        .olho {
-            cursor: pointer;
-            left: 160px;
-            position: absolute;
-            width: 20px;
-        }
-
-
-
-
     </style>
 
     @if(session('msg'))
@@ -62,25 +41,28 @@
 
 <!----------------->
 
-        <script>
+    <center>
 
-                function mouseoverPass(obj) {
-                    var obj = document.getElementById('myPassword');
-                    obj.type = "text";
+        <script>                        
+            function show() {
+                var senha = document.getElementById("senha");
+                if (senha.type === "password") {
+                    senha.type = "text";
+                } else {
+                    senha.type = "password";
                 }
-                function mouseoutPass(obj) {
-                    var obj = document.getElementById('myPassword');
-                    obj.type = "password";
-                }
-            
+            }
         </script>
-  <br>
-  
-  <input type="password" name="password" id="myPassword" size="30" />
-  <img src="https://w7.pngwing.com/pngs/348/781/png-transparent-eye-computer-icons-icon-design-eye-people-color-medical.png" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho"/>
-  
-      
+        
+        <input type="password" name="senha" id="senha" placeholder="Digite a Senha" required>
 
+        <i onclick="show()" class="far fa-eye"></i>
+        
+        
+        <br><br>
+        <input type="submit" value="Enviar">
+        
+    </center>
 
     <!----------------->
 
