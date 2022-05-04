@@ -15,6 +15,8 @@ class CreateCodigosTable extends Migration
     {
         Schema::create('codigos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->text('codigo');
             $table->timestamps();
         });
     }
