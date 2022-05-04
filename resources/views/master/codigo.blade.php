@@ -74,12 +74,11 @@
     <br>
   
   <input type="password" name="password" id="myPassword" size="30" />
-  <img style="width: 50px;" src="\img\olho.png" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho"/>
+
+  <i onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho" class="fas fa-key olho"></i>
+
   
       
-
-
-
 
 
 
