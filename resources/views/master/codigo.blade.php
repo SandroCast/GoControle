@@ -74,7 +74,7 @@
     <br>
   
   <input type="password" name="password" id="myPassword" size="30" />
-  <img src="/img/olho.png" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho"/>
+  <img src="public\img\olho.png" onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho"/>
   
       
 
