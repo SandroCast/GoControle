@@ -50,12 +50,12 @@
                 var olhoF = document.getElementById("olhof");
                 if (senha.type === "password") {
                     senha.type = "text";
-
                     olhoA.style.display = 'none';
-    
-
+                    olhoF.style.display = 'block';
                 } else {
                     senha.type = "password";
+                    olhoF.style.display = 'none';
+                    olhoA.style.display = 'block';
                 }
             }
         </script>
