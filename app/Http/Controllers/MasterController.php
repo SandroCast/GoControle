@@ -153,9 +153,6 @@ class MasterController extends Controller
         $codigo = Codigo::where('codigo', request('codigo'))->first();
 
         if($codigo){
-
-            echo 'ok';
-            exit;
         
             $item = Master::findOrFail($id);
 
@@ -173,7 +170,7 @@ class MasterController extends Controller
 
                     $kardex = new Kardex;
                     $kardex->item = $item->secundario;
-                    $kardex->usuario = $user->name;
+                    $kardex->usuario = $codigo->users->name;
                     $kardex->movimentacao = 'S';
                     $kardex->local = $item->endereco_nome;
                     $kardex->qtde = "-".$qtd;
@@ -186,7 +183,7 @@ class MasterController extends Controller
 
                     $kardex = new Kardex;
                     $kardex->item = $item->secundario;
-                    $kardex->usuario = $user->name;
+                    $kardex->usuario = $codigo->users->name;
                     $kardex->movimentacao = 'S';
                     $kardex->local = $item->endereco_nome;
                     $kardex->qtde = "-".$qtd;
@@ -203,7 +200,7 @@ class MasterController extends Controller
 
         }else{
 
-            return redirect('/estoque/buscar?item='.$url)->with('msg', 'Código não encontrado.'); 
+            return redirect('/estoque/buscar?item='.$url)->with('msg2', 'Código não encontrado.'); 
 
         }
 

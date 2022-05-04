@@ -11,4 +11,11 @@ class Codigo extends Model
 
     protected $connection = 'mysql';
     protected $table = 'codigos';
+
+
+    public function users() {
+
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+
+    }
 }
