@@ -34,18 +34,25 @@
 
 
 
-        #myPassword {
-        width: 150px;
-        padding-right: 20px;
-        }
-        
-        .olho {
-            cursor: pointer;
-            left: 160px;
-            position: absolute;
-            width: 20px;
-        }
-        
+        .submit-eye {
+            position:absolute;
+            top:5px; right:0;
+            z-index:10;
+            border:none;
+            background:transparent;
+            outline:none;
+            }
+
+            .submit-line {
+            position: relative;
+            /*width: 600px;*/
+            }
+
+            .submit-line input {
+            width: 100%;
+            }
+
+
 
     </style>
 
@@ -58,31 +65,28 @@
 
 
 <!----------------->
-        <script>
-            function mouseoverPass(obj) {
-                var obj = document.getElementById('myPassword');
-                obj.type = "text";
-            }
-            function mouseoutPass(obj) {
-                var obj = document.getElementById('myPassword');
-                obj.type = "password";
-            }
-
-        </script>
-            
-
-    <br>
-  
-  <input type="password" name="password" id="myPassword" size="30" />
-
-  <i onclick="mouseoverPass();" onmouseout="mouseoutPass();"  id="olho" class="olho" class="fas fa-key olho"></i>
-
-  
-      
+            <div class="form-group col-sm-6 submit-line">
+                <label>Senha:<span class="stf-color-asterisco">*</span></label>
+                <div class="submit-line">
+                    <input type="password" class="form-control" id="uePassowrd" />
+                    <button class="submit-eye" type="submit">
+                        <i id="ueEyePass" class="far fa-eye"></i>
+                    </button>
+                </div>
+            </div>
 
 
+            <script>
 
+            $("#ueEyePass").mousedown(function () {
+                $("#uePassowrd").attr("type", "text");
+            });
 
+            $("#ueEyePass").mouseup(function () {
+                $("#uePassowrd").attr("type", "password");
+            });
+
+            </script>
 
 
     <!----------------->
