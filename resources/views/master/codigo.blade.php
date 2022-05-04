@@ -63,7 +63,7 @@
         <input type="password" name="senha" id="senha" placeholder="Digite a Senha" required>
 
         <i id="olho" onclick="show()" class="far fa-eye"></i>
-        
+        <i id="olho" onclick="show()" class="far fa-eye-slash"  style="display: none;"></i>
         
         <br><br>
         <input type="submit" value="Enviar">
