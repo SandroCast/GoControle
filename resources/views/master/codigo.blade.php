@@ -49,7 +49,10 @@
                 var olho = document.getElementById("olho");
                 if (senha.type === "password") {
                     senha.type = "text";
-                    olho.class = "far fa-eye-slash";
+
+                    olho. classList. remove('far fa-eye');
+                    olho. classList. add('far fa-eye-slash');
+
 
                 } else {
                     senha.type = "password";
