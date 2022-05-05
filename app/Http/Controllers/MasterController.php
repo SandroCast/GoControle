@@ -330,7 +330,10 @@ class MasterController extends Controller
                 ['id', $endereco->first()->id],
                 ['endereco', 'LIKE', '%PISO: 2%']
             
-            ])->first();
+            ])->get();
+
+            echo $piso;
+            exit;
 
             return view('master.alocar', ['endereco' => $endereco, 'codigo' => $codigo, 'piso' => $piso]);
 
