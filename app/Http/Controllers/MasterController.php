@@ -326,16 +326,7 @@ class MasterController extends Controller
 
             }
 
-            $piso = EnderecoMaster::where([
-                ['id', $endereco->first()->id],
-                ['endereco', 'LIKE', '%PISO: 2%']
-            
-            ])->get();
-
-            echo $piso;
-            exit;
-
-            return view('master.alocar', ['endereco' => $endereco, 'codigo' => $codigo, 'piso' => $piso]);
+            return view('master.alocar', ['endereco' => $endereco, 'codigo' => $codigo]);
 
 
     }
