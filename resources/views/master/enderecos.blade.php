@@ -72,29 +72,10 @@
                                     <tr>
                                         <td>{{$endereco->id}}</td>
                                         <td>{{$endereco->endereco}}</td>
-                                        <td>{{$endereco->descricao}}</td>
-
-                                        @php
-                                            $btnEditar = \DB::connection('mysql')->table('enderecos_masters')->where([
-                                                ['id', 'LIKE', $endereco->id],
-                                                ['endereco', 'LIKE', 'Piso%']
-                                            ])->first();
-                                        @endphp   
-                                        
-                                        
-
-                                        @if ($btnEditar)
-                                            <td>
-                                                <a href="" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                                            </td>
-
-                                        @else
-                                            <td>
-                                                <a href="/estoque/endereco/editar/{{ $endereco->id }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
-                                            </td>
-                                                
-                                        @endif
-    
+                                        <td>{{$endereco->descricao}}</td>    
+                                        <td>
+                                            <a href="/estoque/endereco/editar/{{ $endereco->id }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Editar</a>
+                                        </td>
                                     </tr>
                         
                                 @endforeach

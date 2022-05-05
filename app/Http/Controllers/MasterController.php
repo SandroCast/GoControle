@@ -80,7 +80,19 @@ class MasterController extends Controller
 
         $endereco = EnderecoMaster::findOrFail($id);
 
-        return view('master.editar', compact('endereco'));
+        $permissao = EnderecoMaster::where([
+            ['id', 'LIKE', $id],
+            ['endereco', 'LIKE', 'Piso%']
+        ])->first();
+
+        if($permissao){
+            return redirect('/estoque/enderecos')->with('msg2', 'Endereço bloqueado para exclusão.');
+
+        }else{
+
+            return view('master.editar', compact('endereco'));
+
+        }
         
     }
 
