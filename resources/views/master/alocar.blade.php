@@ -134,7 +134,7 @@
                     
                     <select name="quantidade" class="d-inline codigo" id="qtd">
             
-                        <option value="120" selected>120</option>
+                        <option value="120">120</option>
                         <option value="119">119</option>
                         <option value="118">118</option>
                         <option value="117">117</option>
@@ -253,7 +253,7 @@
                         <option value="4">4</option>
                         <option value="3">3</option>
                         <option value="2">2</option>
-                        <option value="1">1</option>
+                        <option value="1" @php if($piso){echo 'selected';} @endphp>1</option>
                     
                     </select>
 
