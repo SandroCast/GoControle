@@ -346,10 +346,10 @@ class MasterController extends Controller
         if($itens) {
 
             $itens = \DB::connection('mysql')->table('kardex_masters')
-            ->where('item', $itens)
+            ->Where('movimentacao', $itens)
+            ->orwhere('item', 'like', $itens. '%')
             ->orWhere('usuario', 'like', $itens. '%')
-            ->orWhere('movimentacao', $itens)
-            ->orWhere('local', $itens)
+            ->orWhere('local', 'like', $itens. '%')
             ->orderBy('created_at', 'DESC')
             ->get();
         }
