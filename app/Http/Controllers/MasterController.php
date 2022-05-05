@@ -327,7 +327,7 @@ class MasterController extends Controller
             }
 
             $piso = EnderecoMaster::where([
-                ['id', $endereco->id],
+                ['id', $endereco->first()->id],
                 ['endereco', 'LIKE', '%PISO: 2%']
             
             ])->first();
