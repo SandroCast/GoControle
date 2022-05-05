@@ -86,7 +86,7 @@ class MasterController extends Controller
         ])->first();
 
         if($permissao){
-            return redirect('/estoque/enderecos')->with('msg2', 'Endereço bloqueado para exclusão.');
+            return redirect('/estoque/enderecos')->with('msg2', 'Endereço bloqueado para edição.');
 
         }else{
 
