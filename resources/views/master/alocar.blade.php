@@ -253,7 +253,7 @@
                         <option value="4">4</option>
                         <option value="3">3</option>
                         <option value="2">2</option>
-                        <option value="1" @php if($piso){echo 'selected';} @endphp>1</option>
+                        <option value="1" @php if($piso){echo 'selected';}else{} @endphp>1</option>
                     
                     </select>
 
