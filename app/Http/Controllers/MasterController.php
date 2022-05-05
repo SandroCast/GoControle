@@ -225,6 +225,8 @@ class MasterController extends Controller
                     ['id', $codigo]
                 ])->orWhere([
                     ['endereco','LIKE', $codigo]
+                ])->orWhere([
+                    ['descricao', 'LIKE', $codigo]
                 ])->get();
 
                 if(count($endereco) < 1){
