@@ -134,6 +134,12 @@ class MasterController extends Controller
             $itens = Master::Where([
                 ['secundario', 'like', $itens.'%']
 
+            ])->orWhere([
+                ['primario', $itens]
+
+            ])->orWhere([
+                ['item_id', $itens]
+
             ])->orderBy('endereco_id', 'ASC')->get();
             
         
