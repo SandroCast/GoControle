@@ -152,6 +152,9 @@ class MasterController extends Controller
             ])->orWhere([
                 ['item_id', $itens]
 
+            ])->orWhere([
+                ['grife', $itens]
+            
             ])->orderBy('endereco_id', 'ASC')->get();
             
         
@@ -449,6 +452,15 @@ class MasterController extends Controller
 
     }
     
+    public function reposicao($item, $grife, $endereco)
+    {
+
+
+
+
+
+
+    }
     
     
     

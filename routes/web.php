@@ -39,3 +39,5 @@ Route::get('/estoque/lista', [MasterController::class, 'estoque_lista'])->name('
 
 Route::get('/codigo', [MasterController::class, 'codigo'])->name('codigo')->middleware('auth');
 Route::post('/codigo/update', [MasterController::class, 'codigo_update'])->name('codigo_update')->middleware('auth');
+
+Route::get('/reposição/{item}/{grife}/{endereco}', [MasterController::class, 'reposição'])->name('reposição')->middleware('auth');
