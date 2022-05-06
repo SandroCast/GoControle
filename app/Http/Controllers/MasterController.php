@@ -452,13 +452,21 @@ class MasterController extends Controller
 
     }
     
-    public function reposicao($item, $grife, $endereco)
+    public function reposicao(Request $request)
     {
 
+        $item = request('item');
+        $grife = request('grife');
+        $endereco = request('endereco');
+
+        $itens = Master::Where([
+            ['secundario', 'like', $item. '%'],
+            ['grife', 'like', $grife],
+            ['endereco_nome', 'like', $endereco. '%']
+        ])->get();
 
 
-
-
+        return view('master.reposicao', compact('itens'));
 
     }
     
