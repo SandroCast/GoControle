@@ -461,7 +461,7 @@ class MasterController extends Controller
 
         $itens = Master::Where([
             ['secundario', 'like', $item. '%'],
-            ['grife', 'like', $grife],
+            ['grife', 'like', $grife. '%'],
             ['endereco_nome', 'like', $endereco. '%']
         ])->get();
 
