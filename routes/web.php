@@ -41,3 +41,5 @@ Route::get('/codigo', [MasterController::class, 'codigo'])->name('codigo')->midd
 Route::post('/codigo/update', [MasterController::class, 'codigo_update'])->name('codigo_update')->middleware('auth');
 
 Route::get('/reposicao', [MasterController::class, 'reposicao'])->name('reposicao');
+
+Route::get('/etiquetas', [MasterController::class, 'etiquetas'])->name('etiquetas')->middleware('auth');

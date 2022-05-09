@@ -155,7 +155,12 @@ class MasterController extends Controller
             ])->orWhere([
                 ['grife', $itens]
             
+            ])->orWhere([
+                ['descricao', $itens]
+            ])->orWhere([
+                ['endereco', $itens]
             ])->orderBy('endereco_id', 'ASC')->get();
+            
             
         
         }
@@ -469,10 +474,26 @@ class MasterController extends Controller
         return view('master.reposicao', compact('itens'));
 
     }
+
+    public function etiquetas(Request $request)
+    {
+
+
+
+
+
+
+
+
+    }
     
     
     
     
+
+
+
+
     
     
     
