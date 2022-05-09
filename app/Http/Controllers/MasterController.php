@@ -156,9 +156,7 @@ class MasterController extends Controller
                 ['grife', $itens]
             
             ])->orWhere([
-                ['descricao', $itens]
-            ])->orWhere([
-                ['endereco', $itens]
+                ['endereco_nome', 'like', '%' .$itens. '%']
             ])->orderBy('endereco_id', 'ASC')->get();
             
             
