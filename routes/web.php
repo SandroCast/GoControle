@@ -19,7 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home2');
@@ -41,3 +40,4 @@ Route::get('/codigo', [MasterController::class, 'codigo'])->name('codigo')->midd
 Route::post('/codigo/update', [MasterController::class, 'codigo_update'])->name('codigo_update')->middleware('auth');
 
 Route::get('/reposicao', [MasterController::class, 'reposicao'])->name('reposicao');
+
